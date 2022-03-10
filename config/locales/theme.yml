@@ -1,0 +1,18 @@
+de:
+  theme:
+    homepage: "Home"
+    legal: "Impressum"
+    article: "Artikel"
+    articles: "Artikel"
+    project: "Projekt"
+    projects: "Projekte"
+    mainmenu: "Hauptmenü"
+en:
+  theme:
+    homepage: "Home"
+    legal: "Legal"
+    article: "Article"
+    articles: "Articles"
+    project: "Project"
+    projects: "Projects"
+    mainmenu: "Main Menu"
