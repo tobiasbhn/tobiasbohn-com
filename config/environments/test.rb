@@ -36,6 +36,9 @@ Rails.application.configure do
   # Store uploaded files on the local file system in a temporary directory.
   config.active_storage.service = :test
 
+  # Separate queues per environment for Active Job.
+  config.active_job.queue_name_prefix = "tobiasbohn_com_test"
+
   config.action_mailer.perform_caching = false
 
   # Tell Action Mailer not to deliver emails to the real world.
