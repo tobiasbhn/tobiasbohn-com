@@ -1,8 +1,10 @@
 development:
   adapter: async
+  channel_prefix: tobiasbohn_com_development
 
 test:
   adapter: test
+  channel_prefix: tobiasbohn_com_test
 
 production:
   adapter: redis
