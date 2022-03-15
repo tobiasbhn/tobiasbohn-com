@@ -1,11 +1,20 @@
 class SnakeChannel < ApplicationCable::Channel
   def subscribed
-    # stream_from "some_channel"
-    puts "\n\n\n\n\nSUBSCRIBED\n\n\n\n\n"
+    stream_from "main_game"
   end
 
   def unsubscribed
     # Any cleanup needed when channel is unsubscribed
-    puts "\n\n\n\n\nUNSUBSCRIBED\n\n\n\n\n"
+  end
+
+  def receive(data)
+    case data["type"]
+    when "movement"
+      current_player.direction = data["body"]
+    when "name"
+      current_player.name = data["body"]
+    else
+      puts "received unexpected message: #{data}"
+    end
   end
 end
