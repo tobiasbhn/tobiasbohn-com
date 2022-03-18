@@ -13,3 +13,28 @@
  *= require_tree .
  *= require_self
  */
+
+$background-color: #222222;
+
+body, html {
+  margin: 0;
+  padding: 0;
+  width: 100vw;
+  min-height: 100vh;
+  overflow-x: hidden;
+  position: relative;
+}
+
+#snakeCanvas {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  margin: 0;
+  padding: 0;
+  z-index: -50;
+  background-color: $background-color;
+}
