@@ -1,8 +1,11 @@
 class SnakePlayer
   include ActiveModel::API
-  attr_accessor :name, :direction, :length, :head, :positions
+  attr_reader :id, :positions
+  attr_accessor :name, :direction, :length, :head
 
   def initialize(attributes={})
+    super
+    @id = SecureRandom.hex
     @length ||= 5
     @head ||= [0,0]
     @positions = []

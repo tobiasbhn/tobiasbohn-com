@@ -1,6 +1,6 @@
 class SnakeChannel < ApplicationCable::Channel
   def subscribed
-    stream_from "main_game"
+    stream_from "snake_player_#{current_player.id}"
   end
 
   def unsubscribed

@@ -1,30 +1,54 @@
 // Configure your import map in config/importmap.rb. Read more: https://github.com/rails/importmap-rails
 import "channels"
-import { channel } from "./channels/snake_channel";
 
 const snakeboard = document.getElementById("snakeCanvas");
 const snakeboard_ctx = snakeboard.getContext("2d");
 
-const snake_col = "white";
-const tiles_per_width = 25.0;
-var tile_size = 20;
+var tilesPerWidth = 25.0;
+var tileSize = 20;
 var scrollSnake = false;
 var ignoreNextScrollEvent = false;
 
+
+
+// canvas scaling
+function resizeCanvas() {
+  snakeboard.width = snakeboard.clientWidth;
+  snakeboard.height = snakeboard.clientHeight;
+  tileSize = window.innerWidth / tilesPerWidth;
+}
+
+window.addEventListener('resize', () => {
+  resizeCanvas();
+}, false);
+
 resizeCanvas();
+
+
 
 // draw game
 export function drawSnakeGame(data) {
   var json = JSON.parse(data);
+  var snakes = json["players"];
+
+  if (tilesPerWidth != json["tiles"]) {
+    tilesPerWidth = json["tiles"];
+    resizeCanvas();
+  }
 
   clearBoard()
 
   var targetScrollPos;
-  for (var snake = 0; snake < json["body"].length; snake++) {
-    for (var part = 0; part < json["body"][snake]["positions"].length; part++) {
-      var snakePart = json["body"][snake]["positions"][part]
-      drawSnakePart(snakePart);
-      targetScrollPos = snakePart[1] * tile_size + tile_size / 2;
+  for (var snakeNumber = 0; snakeNumber < snakes.length; snakeNumber++) {
+    for (var part = 0; part < snakes[snakeNumber]["positions"].length; part++) {
+      var snakePart = snakes[snakeNumber]["positions"][part]
+      console.log(snakes[snakeNumber]["self"]);
+      if (snakes[snakeNumber]["self"] == true) {
+        targetScrollPos = snakePart[1] * tileSize + tileSize / 2;
+        drawSnakePart(snakePart, "red");
+      } else {
+        drawSnakePart(snakePart, "white");
+      }
     }
   }
   if (scrollSnake) {
@@ -33,58 +57,20 @@ export function drawSnakeGame(data) {
   }
 }
 
-// draw the canvas
-function clearBoard() {
+export function clearBoard() {
   snakeboard_ctx.clearRect(0, 0, snakeboard.width, snakeboard.height);
 }
 
-// draw one snake part
-function drawSnakePart(snakePart) {
-  snakeboard_ctx.fillStyle = snake_col;
-  snakeboard_ctx.fillRect(snakePart[0] * tile_size + 1, snakePart[1] * tile_size + 1, tile_size - 1, tile_size - 1);
+function drawSnakePart(snakePart, color) {
+  snakeboard_ctx.fillStyle = color;
+  snakeboard_ctx.fillRect(snakePart[0] * tileSize + 1, snakePart[1] * tileSize + 1, tileSize - 1, tileSize - 1);
 }
 
 
-// canvas scaling
-function resizeCanvas() {
-  snakeboard.width = snakeboard.clientWidth;
-  snakeboard.height = snakeboard.clientHeight;
-  tile_size = window.innerWidth / tiles_per_width;
+// scroll management
+export function anyGameInput() {
+  scrollSnake = true;
 }
-
-window.addEventListener('resize', () => {
-  resizeCanvas();
-}, false);
-
-// manage input
-document.addEventListener('keydown', (event) => {
-  var gameInput = false;
-
-  if (event.code == "ArrowDown" || event.code == "KeyS") {
-    channel.send({ type: "movement", body: "down" });
-    gameInput = true;
-  }
-
-  if (event.code == "ArrowUp" || event.code == "KeyW") {
-    channel.send({ type: "movement", body: "up" });
-    gameInput = true;
-  }
-
-  if (event.code == "ArrowLeft" || event.code == "KeyA") {
-    channel.send({ type: "movement", body: "left" });
-    gameInput = true;
-  }
-
-  if (event.code == "ArrowRight" || event.code == "KeyD") {
-    channel.send({ type: "movement", body: "right" });
-    gameInput = true;
-  }
-
-  if (gameInput) {
-    event.preventDefault();
-    scrollSnake = true;
-  }
-}, false);
 
 document.addEventListener('scroll', (event) => {
   if (!ignoreNextScrollEvent) {
