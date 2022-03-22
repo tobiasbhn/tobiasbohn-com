@@ -3,7 +3,36 @@
 <% end %>
 
 <% content_for :game do %>
-  <canvas id="snakeCanvas"><canvas>
+  <canvas id="snakeCanvas"></canvas>
 <% end %>
 
-<h1><%= current_page.title %></h1>
+
+
+<section class="flex flex-col">
+  <h1 class="order-3 text-2xl"><%= current_page.title %></h1>
+  <h2 class="order-4 mb-10"><%= content :home_sub_heading %></h2>
+  <p class="order-5 mb-4"><%= content :home_introduction %></p>
+  <%= content.image_tag :home_main_image, {}, { class: "order-6" } %>
+
+  <p class="order-1 text-5xl md:text-6xl"><%= content :home_welcome %></p>
+  <p class="order-2 mt-4 mb-60 whitespace-nowrap flex items-center">
+    <span class="bg-gray-900"><%= render 'shared/icons/arrow-sm-up' %></span>&nbsp;
+    <span class="bg-gray-900"><%= render 'shared/icons/arrow-sm-right' %></span>&nbsp;
+    <span class="bg-gray-900"><%= render 'shared/icons/arrow-sm-down' %></span>&nbsp;
+    <span class="bg-gray-900"><%= render 'shared/icons/arrow-sm-left' %></span>&nbsp;
+    oder&nbsp;
+    <span class="bg-gray-900 font-sans h-5 w-5 text-center align-middle text-xs leading-5">W</span>&nbsp;
+    <span class="bg-gray-900 font-sans h-5 w-5 text-center align-middle text-xs leading-5">A</span>&nbsp;
+    <span class="bg-gray-900 font-sans h-5 w-5 text-center align-middle text-xs leading-5">S</span>&nbsp;
+    <span class="bg-gray-900 font-sans h-5 w-5 text-center align-middle text-xs leading-5">D</span>&nbsp;
+    für&nbsp;Snake.
+  </p>
+</section>
+
+<section class="mt-40">
+  <%= content.html :home_projects %>
+</section>
+
+<section>
+  <%= content.html :home_skills %>
+</section>

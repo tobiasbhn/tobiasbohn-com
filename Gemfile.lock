@@ -1,9 +1,9 @@
 GIT
-  remote: https://github.com/spinacms/spina.git
-  revision: 8538012f75d15912bd016287874590483c4796f4
-  ref: 8538012
+  remote: https://github.com/tobiasbhn/spina.git
+  revision: 57778c55c3b77ccaca5cfd7e55ca8f325a2d7c73
+  ref: 57778c5
   specs:
-    spina (2.8.1)
+    spina (2.9.0)
       ancestry
       attr_json
       babosa
@@ -97,7 +97,7 @@ GEM
     attr_json (1.4.0)
       activerecord (>= 5.0.0, < 7.1)
     babosa (2.0.0)
-    bcrypt (3.1.16)
+    bcrypt (3.1.17)
     bindex (0.8.1)
     breadcrumbs_on_rails (4.1.0)
       railties (>= 5.0)
@@ -268,7 +268,7 @@ DEPENDENCIES
   puma (~> 5.0)
   rails (~> 7.0.2, >= 7.0.2.3)
   sassc-rails
-  spina (~> 2.8.1)!
+  spina!
   sprockets-rails
   tailwindcss-rails
   tzinfo-data

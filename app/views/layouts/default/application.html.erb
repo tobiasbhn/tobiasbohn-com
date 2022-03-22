@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html lang="<%= I18n.locale.to_s %>">
   <head>
     <title><%= current_account.name %></title>
     <meta name="viewport" content="width=device-width,initial-scale=1">
@@ -14,7 +14,7 @@
 
   <body>
     <%= render 'default/shared/navigation' %>
-    <main class="">
+    <main class="w-100 max-w-[66ch] mx-auto mt-40 lg:mx-52 px-3 text-gray-300 text-lg font-serif">
       <%= yield %>
     </main>
     <%= yield(:game) %>

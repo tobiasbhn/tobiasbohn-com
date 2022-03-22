@@ -7,6 +7,25 @@ de:
     project: "Projekt"
     projects: "Projekte"
     mainmenu: "Hauptmenü"
+    parts:
+      home_welcome:
+        title: "home_welcome"
+        hint: ""
+      home_sub_heading:
+        title: "home_sub_heading"
+        hint: ""
+      home_introduction:
+        title: "home_introduction"
+        hint: ""
+      home_main_image:
+        title: "home_main_image"
+        hint: ""
+      home_projects:
+        title: "home_projects"
+        hint: ""
+      home_skills:
+        title: "home_skills"
+        hint: ""
 en:
   theme:
     homepage: "Home"
@@ -16,3 +35,22 @@ en:
     project: "Project"
     projects: "Projects"
     mainmenu: "Main Menu"
+    parts:
+      home_welcome:
+        title: "home_welcome"
+        hint: ""
+      home_sub_heading:
+        title: "home_sub_heading"
+        hint: ""
+      home_introduction:
+        title: "home_introduction"
+        hint: ""
+      home_main_image:
+        title: "home_main_image"
+        hint: ""
+      home_projects:
+        title: "home_projects"
+        hint: ""
+      home_skills:
+        title: "home_skills"
+        hint: ""

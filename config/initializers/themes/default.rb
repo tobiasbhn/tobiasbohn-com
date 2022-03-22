@@ -20,14 +20,22 @@ Spina::Theme.register do |theme|
   # - Attachment
   # - Option
   # - Repeater
-  theme.parts = []
+  theme.parts = [
+    { name: 'home_welcome', title: I18n.t('theme.parts.home_welcome.title'), part_type: "Spina::Parts::Line", hint: I18n.t('theme.parts.home_welcome.hint') },
+    { name: 'home_sub_heading', title: I18n.t('theme.parts.home_sub_heading.title'), part_type: "Spina::Parts::Line", hint: I18n.t('theme.parts.home_sub_heading.hint') },
+    { name: 'home_introduction', title: I18n.t('theme.parts.home_introduction.title'), part_type: "Spina::Parts::MultiLine", hint: I18n.t('theme.parts.home_introduction.hint') },
+    { name: 'home_main_image', title: I18n.t('theme.parts.home_main_image.title'), part_type: "Spina::Parts::Image", hint: I18n.t('theme.parts.home_main_image.hint') },
+
+    { name: 'home_projects', title: I18n.t('theme.parts.home_projects.title'), part_type: "Spina::Parts::Text", hint: I18n.t('theme.parts.home_projects.hint') },
+    { name: 'home_skills', title: I18n.t('theme.parts.home_skills.title'), part_type: "Spina::Parts::Text", hint: I18n.t('theme.parts.home_skills.hint') },
+  ]
 
   # View templates
   # Every page has a view template stored in app/views/my_theme/pages/*
   # You define which parts you want to enable for every view template
   # by referencing them from the theme.parts configuration above.
   theme.view_templates = [
-    { name: 'homepage', title: I18n.t('theme.homepage'), parts: %w() },
+    { name: 'homepage', title: I18n.t('theme.homepage'), parts: %w(home_welcome home_sub_heading home_introduction home_main_image home_projects home_skills) },
     { name: 'legal_template', title: I18n.t('theme.legal'), parts: %w() },
     { name: 'articles_template', title: I18n.t('theme.articles'), parts: %w() },
     { name: 'projects_template', title: I18n.t('theme.projects'), parts: %w() },

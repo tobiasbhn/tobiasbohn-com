@@ -8,6 +8,8 @@ const snakeboard_ctx = snakeboard.getContext("2d");
 const snake_col = "white";
 const tiles_per_width = 25.0;
 var tile_size = 20;
+var scrollSnake = false;
+var ignoreNextScrollEvent = false;
 
 resizeCanvas();
 
@@ -16,10 +18,18 @@ export function drawSnakeGame(data) {
   var json = JSON.parse(data);
 
   clearBoard()
+
+  var targetScrollPos;
   for (var snake = 0; snake < json["body"].length; snake++) {
     for (var part = 0; part < json["body"][snake]["positions"].length; part++) {
-      drawSnakePart(json["body"][snake]["positions"][part]);
+      var snakePart = json["body"][snake]["positions"][part]
+      drawSnakePart(snakePart);
+      targetScrollPos = snakePart[1] * tile_size + tile_size / 2;
     }
+  }
+  if (scrollSnake) {
+    ignoreNextScrollEvent = true;
+    window.scroll(0, targetScrollPos - window.innerHeight / 2);
   }
 }
 
@@ -37,8 +47,8 @@ function drawSnakePart(snakePart) {
 
 // canvas scaling
 function resizeCanvas() {
-  snakeboard.width = window.innerWidth;
-  snakeboard.height = window.innerHeight;
+  snakeboard.width = snakeboard.clientWidth;
+  snakeboard.height = snakeboard.clientHeight;
   tile_size = window.innerWidth / tiles_per_width;
 }
 
@@ -47,24 +57,41 @@ window.addEventListener('resize', () => {
 }, false);
 
 // manage input
-document.addEventListener('keyup', (event) => {
+document.addEventListener('keydown', (event) => {
+  var gameInput = false;
+
   if (event.code == "ArrowDown" || event.code == "KeyS") {
     channel.send({ type: "movement", body: "down" });
+    gameInput = true;
   }
 
   if (event.code == "ArrowUp" || event.code == "KeyW") {
     channel.send({ type: "movement", body: "up" });
+    gameInput = true;
   }
 
   if (event.code == "ArrowLeft" || event.code == "KeyA") {
     channel.send({ type: "movement", body: "left" });
+    gameInput = true;
   }
 
   if (event.code == "ArrowRight" || event.code == "KeyD") {
     channel.send({ type: "movement", body: "right" });
+    gameInput = true;
+  }
+
+  if (gameInput) {
+    event.preventDefault();
+    scrollSnake = true;
   }
 }, false);
 
+document.addEventListener('scroll', (event) => {
+  if (!ignoreNextScrollEvent) {
+    scrollSnake = false;
+  }
+  ignoreNextScrollEvent = false;
+}, false);
 
 
 

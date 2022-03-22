@@ -36,6 +36,9 @@ module TobiasbohnCom
 
     config.active_job.queue_adapter = :delayed_job
 
+    # while not in Docker use mini_magick instead of libvips
+    config.active_storage.variant_processor = :mini_magick
+
     config.before_initialize do
       # Permitted locales available for the application
       I18n.config.available_locales = [:en, :de]
