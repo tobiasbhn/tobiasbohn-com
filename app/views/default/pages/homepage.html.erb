@@ -14,7 +14,7 @@
   <p class="order-5 mb-4"><%= content :home_introduction %></p>
   <%= content.image_tag :home_main_image, {}, { class: "order-6" } %>
 
-  <p class="order-1 mb-4 text-5xl md:text-6xl"><%= content :home_welcome %></p>
+  <p class="order-1 mb-4 text-5xl sm:!text-6xl"><%= content :home_welcome %></p>
   <p class="order-2 mb-60 whitespace-nowrap flex items-center">
     <span class="bg-gray-900"><%= render 'shared/icons/arrow-sm-up' %></span>&nbsp;
     <span class="bg-gray-900"><%= render 'shared/icons/arrow-sm-right' %></span>&nbsp;
@@ -29,10 +29,19 @@
   </p>
 </section>
 
-<section class="mb-20 tb-content-wrapper">
+<section class="mb-40 tb-content-wrapper">
   <%= content.html :home_projects %>
 </section>
 
-<section class="mb-20 tb-content-wrapper">
+<section class="mb-40 tb-content-wrapper">
   <%= content.html :home_skills %>
+
+  <ul class="flex flex-wrap items-start justify-around gap-1 mt-4">
+    <% repeater(:home_skills_repeater) do |skill| %>
+      <li>
+        <%= skill.content.image_tag :home_skills_image, {}, { class: "w-28 h-28" } %>
+        <span class="sr-only"><%= skill.content(:home_skills_title) %></span>
+      </li>
+    <% end %>
+  </ul>
 </section>

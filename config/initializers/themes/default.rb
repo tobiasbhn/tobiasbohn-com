@@ -28,6 +28,13 @@ Spina::Theme.register do |theme|
 
     { name: 'home_projects', title: I18n.t('theme.parts.home_projects.title'), part_type: "Spina::Parts::Text", hint: I18n.t('theme.parts.home_projects.hint') },
     { name: 'home_skills', title: I18n.t('theme.parts.home_skills.title'), part_type: "Spina::Parts::Text", hint: I18n.t('theme.parts.home_skills.hint') },
+
+    { name: 'home_skills_title', title: I18n.t('theme.parts.home_skills_title.title'), part_type: "Spina::Parts::Line", hint: I18n.t('theme.parts.home_skills_title.hint') },
+    { name: 'home_skills_image', title: I18n.t('theme.parts.home_skills_image.title'), part_type: "Spina::Parts::Image", hint: I18n.t('theme.parts.home_skills_image.hint') },
+    { name: 'home_skills_repeater', title: I18n.t('theme.parts.home_skills_repeater.title'), part_type: "Spina::Parts::Repeater", parts: %w(home_skills_title home_skills_image), hint: I18n.t('theme.parts.home_skills_repeater.hint') },
+
+    { name: 'rich_content', title: I18n.t('theme.parts.rich_content.title'), part_type: "Spina::Parts::Text", hint: I18n.t('theme.parts.rich_content.hint') },
+    { name: 'footer', title: I18n.t('theme.parts.footer.title'), part_type: "Spina::Parts::Text", hint: I18n.t('theme.parts.footer.hint') },
   ]
 
   # View templates
@@ -35,7 +42,7 @@ Spina::Theme.register do |theme|
   # You define which parts you want to enable for every view template
   # by referencing them from the theme.parts configuration above.
   theme.view_templates = [
-    { name: 'homepage', title: I18n.t('theme.homepage'), parts: %w(home_welcome home_sub_heading home_introduction home_main_image home_projects home_skills) },
+    { name: 'homepage', title: I18n.t('theme.homepage'), parts: %w(home_welcome home_sub_heading home_introduction home_main_image home_projects home_skills home_skills_repeater) },
     { name: 'legal_template', title: I18n.t('theme.legal'), parts: %w() },
     { name: 'articles_template', title: I18n.t('theme.articles'), parts: %w() },
     { name: 'projects_template', title: I18n.t('theme.projects'), parts: %w() },
@@ -64,7 +71,7 @@ Spina::Theme.register do |theme|
   # Layout parts (optional)
   # You can create global content that doesn't belong to one specific page. We call these layout parts.
   # You only have to reference the name of the parts you want to have here.
-  theme.layout_parts = []
+  theme.layout_parts = %w(footer)
 
   # Resources (optional)
   # Think of resources as a collection of pages. They are managed separately in Spina

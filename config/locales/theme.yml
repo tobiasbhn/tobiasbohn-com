@@ -26,6 +26,18 @@ de:
       home_skills:
         title: "home_skills"
         hint: ""
+      home_skills_title:
+        title: "home_skills_title"
+        hint: ""
+      home_skills_image:
+        title: "home_skills_image"
+        hint: ""
+      home_skills_repeater:
+        title: "home_skills_repeater"
+        hint: ""
+      rich_content:
+        title: "rich_content"
+        hint: ""
 en:
   theme:
     homepage: "Home"
@@ -53,4 +65,16 @@ en:
         hint: ""
       home_skills:
         title: "home_skills"
+        hint: ""
+      home_skills_title:
+        title: "home_skills_title"
+        hint: ""
+      home_skills_image:
+        title: "home_skills_image"
+        hint: ""
+      home_skills_repeater:
+        title: "home_skills_repeater"
+        hint: ""
+      rich_content:
+        title: "rich_content"
         hint: ""

@@ -7,7 +7,6 @@
     <%= csp_meta_tag %>
     <%= stylesheet_link_tag "tailwind", "inter-font", "data-turbo-track": "reload" %>
     <%= stylesheet_link_tag "application" %>
-    <link rel="stylesheet" href="https://unpkg.com/flowbite@1.4.1/dist/flowbite.min.css" />
 
     <%= javascript_importmap_tags %>
     <%= yield(:head) %>
@@ -22,6 +21,10 @@
       </div>
       <main class="basis-full lg:basis-auto max-w-[63ch] mt-40 px-5">
         <%= yield %>
+
+        <section class="mb-40 tb-content-wrapper text-center">
+          <%= current_account.content.html :footer %>
+        </section>
       </main>
     </div>
 
