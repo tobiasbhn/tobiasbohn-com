@@ -7,16 +7,24 @@
     <%= csp_meta_tag %>
     <%= stylesheet_link_tag "tailwind", "inter-font", "data-turbo-track": "reload" %>
     <%= stylesheet_link_tag "application" %>
+    <link rel="stylesheet" href="https://unpkg.com/flowbite@1.4.1/dist/flowbite.min.css" />
 
     <%= javascript_importmap_tags %>
     <%= yield(:head) %>
   </head>
 
   <body>
-    <%= render 'default/shared/navigation' %>
-    <main class="w-100 max-w-[66ch] mx-auto mt-40 lg:mx-52 px-3 text-gray-300 text-lg font-serif">
-      <%= yield %>
-    </main>
+    <div class="flex flex-row-reverse flex-wrap justify-around items-start text-gray-300 text-xl font-serif pt-8">
+      <div class="basis-full lg:basis-auto lg:mt-40">
+        <div class="max-w-[63ch] px-5 mx-auto">
+          <%= render 'default/shared/navigation' %>
+        </div>
+      </div>
+      <main class="basis-full lg:basis-auto max-w-[63ch] mt-40 px-5">
+        <%= yield %>
+      </main>
+    </div>
+
     <%= yield(:game) %>
   </body>
 </html>

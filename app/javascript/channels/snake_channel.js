@@ -1,5 +1,5 @@
 import consumer from "channels/consumer"
-import { drawSnakeGame, clearBoard, anyGameInput } from "../snake";
+import { drawSnakeGame, clearBoard } from "../snake";
 
 const channel = consumer.subscriptions.create("SnakeChannel", {
   connected() {
@@ -45,6 +45,5 @@ document.addEventListener('keydown', (event) => {
 
   if (anyInput) {
     event.preventDefault();
-    anyGameInput();
   }
 }, false);

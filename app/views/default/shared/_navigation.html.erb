@@ -1,3 +1,23 @@
-<nav>
-NAVIGATION
+<nav class="w-full flex flex-col items-end relative">
+  <button data-collapse-toggle="main-menu" id="main-menu-button" type="button" class="inline-flex items-center" aria-controls="main-menu" aria-expanded="false">
+    <span class="sr-only">Open main menu</span>
+    <svg class="w-10 h-10" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M3 5a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM3 10a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM3 15a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1z" clip-rule="evenodd"></path></svg>
+  </button>
+
+  <div class="hidden absolute w-full sm:w-auto bottom-0 right-0 translate-y-full z-50 py-2 sm:px-2" id="main-menu">
+    <ul class="py-1 list-none bg-gray-100 rounded shadow" aria-labelledby="main-menu-button">
+      <li>
+        <a href="#" class="block py-2 px-4 sm:!px-8 text-gray-700 hover:bg-gray-50">Dashboard</a>
+      </li>
+      <li>
+        <a href="#" class="block py-2 px-4 sm:!px-8 text-gray-700 hover:bg-gray-50">Settings</a>
+      </li>
+      <li>
+        <a href="#" class="block py-2 px-4 sm:!px-8 text-gray-700 hover:bg-gray-50">Earnings</a>
+      </li>
+      <li>
+        <a href="#" class="block py-2 px-4 sm:!px-8 text-gray-700 hover:bg-gray-50">Sign out</a>
+      </li>
+    </ul>
+  </div>
 </nav>

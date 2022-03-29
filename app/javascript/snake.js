@@ -6,8 +6,6 @@ const snakeboard_ctx = snakeboard.getContext("2d");
 
 var tilesPerWidth = 25.0;
 var tileSize = 20;
-var scrollSnake = false;
-var ignoreNextScrollEvent = false;
 
 
 
@@ -38,22 +36,15 @@ export function drawSnakeGame(data) {
 
   clearBoard()
 
-  var targetScrollPos;
   for (var snakeNumber = 0; snakeNumber < snakes.length; snakeNumber++) {
     for (var part = 0; part < snakes[snakeNumber]["positions"].length; part++) {
       var snakePart = snakes[snakeNumber]["positions"][part]
-      console.log(snakes[snakeNumber]["self"]);
       if (snakes[snakeNumber]["self"] == true) {
-        targetScrollPos = snakePart[1] * tileSize + tileSize / 2;
         drawSnakePart(snakePart, "red");
       } else {
         drawSnakePart(snakePart, "white");
       }
     }
-  }
-  if (scrollSnake) {
-    ignoreNextScrollEvent = true;
-    window.scroll(0, targetScrollPos - window.innerHeight / 2);
   }
 }
 
@@ -65,21 +56,6 @@ function drawSnakePart(snakePart, color) {
   snakeboard_ctx.fillStyle = color;
   snakeboard_ctx.fillRect(snakePart[0] * tileSize + 1, snakePart[1] * tileSize + 1, tileSize - 1, tileSize - 1);
 }
-
-
-// scroll management
-export function anyGameInput() {
-  scrollSnake = true;
-}
-
-document.addEventListener('scroll', (event) => {
-  if (!ignoreNextScrollEvent) {
-    scrollSnake = false;
-  }
-  ignoreNextScrollEvent = false;
-}, false);
-
-
 
 
 
