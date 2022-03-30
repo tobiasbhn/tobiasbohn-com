@@ -12,6 +12,7 @@ class SnakePlayer
   end
 
   def update
+    puts "UPDATE PLAYER"
     if @direction.present?
       @head[0] += direction_to_velocity[0]
       @head[1] += direction_to_velocity[1]
@@ -22,6 +23,13 @@ class SnakePlayer
 
   def increase
     @length += 1
+  end
+
+  def reset(head)
+    @direction = ""
+    @head = head
+    @length = 5
+    @positions = []
   end
 
   def collides_self?

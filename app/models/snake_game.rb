@@ -4,7 +4,7 @@ require 'singleton'
 class SnakeGame
   include Singleton
 
-  TILES = 50
+  TILES = 25
 
   def start_game
     return if @status == "started"
@@ -18,6 +18,7 @@ class SnakeGame
     end.execute
 
     @status = "started"
+    @foods = []
   end
 
   def stop_game
@@ -25,7 +26,7 @@ class SnakeGame
 
     puts "Teardown Game."
     @timer.shutdown
-    @timer = @players = nil
+    @timer = @players = @foods = nil
     @status = "stopped"
   end
 
@@ -43,15 +44,11 @@ class SnakeGame
     stop_game() if @players.count <= 0
   end
 
-  def reset_player(player)
-    puts "Reset Player."
-    remove_player(player)
-  end
-
   def game_update
     puts "Update Game."
     update_players()
     check_collisions()
+    update_foods()
     send_updates()
   end
 
@@ -80,7 +77,26 @@ class SnakeGame
 
     # reset collision players
     to_reset.each do |player|
-      reset_player(player)
+      player.reset([SnakeGame::TILES / 2, 4])
+    end
+  end
+
+  def update_foods
+    @foods.each do |food|
+      del_food = false
+      @players.each do |player|
+        if (player.positions.include?(food))
+          player.increase()
+          del_food = true;
+        end
+      end
+
+      @foods.delete(food) if del_food
+    end
+
+    if @foods.count < @players.count
+      random_food = [rand(1...SnakeGame::TILES), rand(1..12)]
+      @foods << random_food
     end
   end
 
@@ -88,7 +104,7 @@ class SnakeGame
     # send response to clients to draw
     @players.each do |player|
       player_data = @players.map { |p| { self: p == player, name: p.name, positions: p.positions } }
-      ActionCable.server.broadcast("snake_player_#{player.id}", { tiles: SnakeGame::TILES, players: player_data }.to_json )
+      ActionCable.server.broadcast("snake_player_#{player.id}", { tiles: SnakeGame::TILES, players: player_data, foods: @foods }.to_json )
     end
   end
 end
