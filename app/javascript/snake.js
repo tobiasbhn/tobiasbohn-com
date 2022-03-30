@@ -7,10 +7,11 @@ const snakeboard_ctx = snakeboard.getContext("2d");
 var tilesPerWidth = 25.0;
 var tileSize = 20;
 
-const snake_color = "#FFFFFF"
-const food_color = "#999999"
-const label_bg_color = "#000000"
-const label_text_color = "#FFFFFF"
+const snake_color = "#CCCCCC";
+const self_head_color = "#2D4739";
+const food_color = "#888888";
+const label_bg_color = "#000000";
+const label_text_color = "#FFFFFF";
 
 
 
@@ -44,9 +45,12 @@ export function drawSnakeGame(data) {
 
   // draw snakes
   for (var snakeNumber = 0; snakeNumber < snakes.length; snakeNumber++) {
-    for (var part = 0; part < snakes[snakeNumber]["positions"].length; part++) {
+    var head = true;
+    for (var part = snakes[snakeNumber]["positions"].length - 1; part >= 0 ; part--) {
       var snakePart = snakes[snakeNumber]["positions"][part]
-      drawPart(snakePart, snake_color);
+      var use_color = head && snakes[snakeNumber]["self"] ? self_head_color : snake_color;
+      drawPart(snakePart, use_color);
+      head = false;
     }
     drawSnakeInfo(snakes[snakeNumber], label_text_color);
   }
@@ -72,7 +76,9 @@ function drawSnakeInfo(snake, color) {
   }
 
   var displayName = snake["name"] == null ? "Anonymous" : snake["name"];
-  displayName = snake["self"] ? "You" : displayName;
+  displayName = snake["self"] ? displayName + " (You)" : displayName;
+
+
 
   // Prepare Text
   var infoSize = 20;
