@@ -7,6 +7,11 @@ const snakeboard_ctx = snakeboard.getContext("2d");
 var tilesPerWidth = 25.0;
 var tileSize = 20;
 
+const snake_color = "#FFFFFF"
+const food_color = "#999999"
+const label_bg_color = "#000000"
+const label_text_color = "#FFFFFF"
+
 
 
 // canvas scaling
@@ -41,14 +46,14 @@ export function drawSnakeGame(data) {
   for (var snakeNumber = 0; snakeNumber < snakes.length; snakeNumber++) {
     for (var part = 0; part < snakes[snakeNumber]["positions"].length; part++) {
       var snakePart = snakes[snakeNumber]["positions"][part]
-      drawPart(snakePart, "white");
+      drawPart(snakePart, snake_color);
     }
-    drawSnakeInfo(snakes[snakeNumber], "white");
+    drawSnakeInfo(snakes[snakeNumber], label_text_color);
   }
 
   // draw foods
   for (var foodNumber = 0; foodNumber < json["foods"].length; foodNumber++) {
-    drawPart(json["foods"][foodNumber], "green");
+    drawPart(json["foods"][foodNumber], food_color);
   }
 }
 
@@ -80,8 +85,8 @@ function drawSnakeInfo(snake, color) {
   var infoPosition = [(headPart[0] + 1) * tileSize, headPart[1] * tileSize - infoSize];
 
   // Bubble
-  snakeboard_ctx.strokeStyle = "red";
-  snakeboard_ctx.fillStyle = "red";
+  snakeboard_ctx.strokeStyle = label_bg_color;
+  snakeboard_ctx.fillStyle = label_bg_color;
   roundRect(snakeboard_ctx, infoPosition[0] - textBorder, infoPosition[1] - textBorder, textWidth + textBorder * 2, infoSize + textBorder * 2, infoSize / 5, true);
 
   // Print Text

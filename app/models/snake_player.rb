@@ -1,7 +1,7 @@
 class SnakePlayer
   include ActiveModel::API
   attr_reader :id, :positions
-  attr_accessor :name, :direction, :length, :head
+  attr_accessor :name, :direction, :length, :head, :food
 
   def initialize(attributes={})
     super
@@ -19,10 +19,21 @@ class SnakePlayer
       @positions << @head.dup
       @positions.shift until @positions.size <= @length
     end
+
+    generate_food()
   end
 
   def increase
     @length += 1
+  end
+
+  def generate_food
+    return if @food.present? || !@direction.present?
+
+    @food = SnakeFood.new
+    @food.position = [rand(1...SnakeGame::TILES), rand(1..12)]
+    @food.owner = self
+    SnakeGame.instance.add_food(@food)
   end
 
   def reset(head)
