@@ -37,6 +37,20 @@ body, html {
   pointer-events: none;
 }
 
+#snakeNameInput {
+  border-top: 0px;
+  border-left: 0px;
+  border-right: 0px;
+  border-bottom: 2px solid white;
+  background-color: transparent;
+  font-size: inherit;
+  width: 7em;
+
+  &::placeholder {
+    font-size: 0.5em;
+  }
+}
+
 .tb-content-wrapper {
   h1 {
     font-size: 2.5rem;

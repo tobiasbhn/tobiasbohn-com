@@ -14,18 +14,24 @@
   <p class="order-5 mb-4"><%= content :home_introduction %></p>
   <%= content.image_tag :home_main_image, {}, { class: "order-6" } %>
 
-  <p class="order-1 mb-4 text-5xl sm:!text-6xl"><%= content :home_welcome %></p>
+
+  <p class="order-1 mb-4 text-5xl sm:!text-6xl">
+    <span class="whitespace-nowrap" aria-hidden="true">
+      Hey <input type="text" id="snakeNameInput" placeholder="<%= I18n.t('home.name_query') %>">.
+    </span><br>
+    <%= content :home_welcome %>
+  </p>
   <p class="order-2 mb-60 whitespace-nowrap flex items-center">
     <span class="bg-gray-900"><%= render 'shared/icons/arrow-sm-up' %></span>&nbsp;
     <span class="bg-gray-900"><%= render 'shared/icons/arrow-sm-right' %></span>&nbsp;
     <span class="bg-gray-900"><%= render 'shared/icons/arrow-sm-down' %></span>&nbsp;
     <span class="bg-gray-900"><%= render 'shared/icons/arrow-sm-left' %></span>&nbsp;
-    oder&nbsp;
+    <%= I18n.t('home.or') %>&nbsp;
     <span class="bg-gray-900 font-sans h-5 w-5 text-center align-middle text-xs leading-5">W</span>&nbsp;
     <span class="bg-gray-900 font-sans h-5 w-5 text-center align-middle text-xs leading-5">A</span>&nbsp;
     <span class="bg-gray-900 font-sans h-5 w-5 text-center align-middle text-xs leading-5">S</span>&nbsp;
     <span class="bg-gray-900 font-sans h-5 w-5 text-center align-middle text-xs leading-5">D</span>&nbsp;
-    für&nbsp;Snake.
+    <%= I18n.t('home.for_snake') %>
   </p>
 </section>
 
@@ -39,7 +45,7 @@
   <ul class="flex flex-wrap items-start justify-around gap-1 mt-4">
     <% repeater(:home_skills_repeater) do |skill| %>
       <li>
-        <%= skill.content.image_tag :home_skills_image, {}, { class: "w-28 h-28" } %>
+        <%= skill.content.image_tag :home_skills_image, {}, { class: "w-28 h-28", title: "#{ skill.content(:home_skills_title) }" } %>
         <span class="sr-only"><%= skill.content(:home_skills_title) %></span>
       </li>
     <% end %>
