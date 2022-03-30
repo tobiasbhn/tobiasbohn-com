@@ -1,7 +1,7 @@
 GIT
-  remote: https://github.com/tobiasbhn/spina.git
-  revision: 57778c55c3b77ccaca5cfd7e55ca8f325a2d7c73
-  ref: 57778c5
+  remote: https://github.com/spinacms/spina.git
+  revision: 9ac7a1fa4eff9364ed6861873fc2e8a506500247
+  ref: 9ac7a1f
   specs:
     spina (2.9.0)
       ancestry
@@ -244,7 +244,7 @@ GEM
       railties (>= 6.0.0)
     tzinfo (2.0.4)
       concurrent-ruby (~> 1.0)
-    view_component (2.50.0)
+    view_component (2.52.0)
       activesupport (>= 5.0.0, < 8.0)
       method_source (~> 1.0)
     web-console (4.2.0)

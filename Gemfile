@@ -20,7 +20,7 @@ gem "tailwindcss-rails"
 gem "tzinfo-data", platforms: %i[ mingw mswin x64_mingw jruby ]
 
 # Spina CMS
-gem 'spina', github: "tobiasbhn/spina", ref: "57778c5"
+gem 'spina', github: "spinacms/spina", ref: "9ac7a1f"
 # Delayed Job
 gem 'delayed_job_active_record'
 
