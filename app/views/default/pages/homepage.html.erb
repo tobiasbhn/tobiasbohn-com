@@ -22,10 +22,11 @@
     <%= content :home_welcome %>
   </p>
   <p class="order-2 mb-60 whitespace-nowrap flex items-center">
-    <span class="bg-gray-900"><%= render 'shared/icons/arrow-sm-up' %></span>&nbsp;
-    <span class="bg-gray-900"><%= render 'shared/icons/arrow-sm-right' %></span>&nbsp;
-    <span class="bg-gray-900"><%= render 'shared/icons/arrow-sm-down' %></span>&nbsp;
-    <span class="bg-gray-900"><%= render 'shared/icons/arrow-sm-left' %></span>&nbsp;
+    <span class="sr-only"><%= I18n.t('home.arrow_keys') %>&nbsp;</span>
+    <span class="bg-gray-900" aria-hidden="true"><%= render 'shared/icons/arrow-sm-up' %></span>&nbsp;
+    <span class="bg-gray-900" aria-hidden="true"><%= render 'shared/icons/arrow-sm-right' %></span>&nbsp;
+    <span class="bg-gray-900" aria-hidden="true"><%= render 'shared/icons/arrow-sm-down' %></span>&nbsp;
+    <span class="bg-gray-900" aria-hidden="true"><%= render 'shared/icons/arrow-sm-left' %></span>&nbsp;
     <%= I18n.t('home.or') %>&nbsp;
     <span class="bg-gray-900 font-sans h-5 w-5 text-center align-middle text-xs leading-5">W</span>&nbsp;
     <span class="bg-gray-900 font-sans h-5 w-5 text-center align-middle text-xs leading-5">A</span>&nbsp;
