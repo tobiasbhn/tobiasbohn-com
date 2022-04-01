@@ -1,0 +1,12 @@
+<div class="mt-6">
+  <label class="block text-sm leading-5 font-medium text-gray-700"><%= f.object.title %></label>
+  <div class="text-gray-400 text-sm"><%= f.object.hint %></div>
+  <div class="mt-1 flex flex-wrap gap-2">
+    <% pages_for_options = Spina::Resource.find_by(name: "tags")&.pages.live.joins(:translations).where(translations: {locale: @locale}) %>
+    <% options = Spina::Page.sort_by_ancestry(pages_for_options.arrange(order: :position)) %>
+    <%= f.select :tag_id,
+            options.collect{ |e| [e.menu_title(locale: locale).indent(e.depth, '--'), e.id] },
+            { include_blank: true },
+            { class: "form-select block w-full max-w-5xl sm:text-sm sm:leading-5" } %>
+  </div>
+</div>

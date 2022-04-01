@@ -1,9 +1,9 @@
 GIT
   remote: https://github.com/spinacms/spina.git
-  revision: 9ac7a1fa4eff9364ed6861873fc2e8a506500247
-  ref: 9ac7a1f
+  revision: 0be93253917b89b9c39f4345180d7eecc92983c0
+  ref: 0be9325
   specs:
-    spina (2.9.0)
+    spina (2.9.1)
       ancestry
       attr_json
       babosa
