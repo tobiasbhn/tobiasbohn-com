@@ -1,1 +1,15 @@
-<h1><%= current_page.title %></h1>
+<% content_for :head do %>
+  <%= javascript_import_module_tag "snake" %>
+<% end %>
+
+<% content_for :game do %>
+  <canvas id="snakeCanvas"></canvas>
+<% end %>
+
+<%= render 'default/shared/breadcrumbs' %>
+<article class="mb-40 mt-6 tb-content">
+  <h1 class="mb-4"><%= current_page.title %></h1>
+  <%= content.image_tag(:main_image, {}, { class: "rounded drop-shadow mb-4" }) %>
+  <%= content.html(:rich_content) %>
+  <%= render 'default/shared/skills_selector', skills_selector: current_page.content(:skills_selector) %>
+</article>

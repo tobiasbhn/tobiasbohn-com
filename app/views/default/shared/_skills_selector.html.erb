@@ -1,0 +1,12 @@
+
+<ul class="flex flex-wrap items-start justify-center gap-1 mt-4">
+  <% repeater(skills_selector) do |tag| %>
+    <% tag_page = tag.content(:single_tag_selector) %>
+    <% if tag_page.present? && tag_page.content(:main_image).present? %>
+      <li class="">
+        <%= tag_page&.content&.image_tag :main_image, {}, { class: "w-28 h-28", title: "#{ tag_page.title }" } %>
+        <span class="sr-only"><%= tag_page.title %></span>
+      </li>
+    <% end %>
+  <% end %>
+</ul>

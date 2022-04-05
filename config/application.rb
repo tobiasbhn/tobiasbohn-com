@@ -39,6 +39,7 @@ module TobiasbohnCom
     # while not in Docker use mini_magick instead of libvips
     config.active_storage.variant_processor = :mini_magick
 
+    # setup i18n in application rather initializer to use i18n in spina theme setup
     config.before_initialize do
       # Permitted locales available for the application
       I18n.config.available_locales = [:en, :de]

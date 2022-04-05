@@ -21,7 +21,7 @@ const channel = consumer.subscriptions.create("SnakeChannel", {
 });
 
 
-
+// TODO: pass name via url params to other pages, where no input field is given
 const inputHandler = function(e) {
   // console.log(e.target.value);
   channel.send({ type: "name", body: e.target.value });
@@ -30,15 +30,15 @@ const inputHandler = function(e) {
 var inputFieldHasFocus = false;
 var inputElement = document.getElementById("snakeNameInput");
 
-inputElement.addEventListener('focus', (event) => {
+inputElement?.addEventListener('focus', (event) => {
   inputFieldHasFocus = true;
 })
-inputElement.addEventListener('focusout', (event) => {
+inputElement?.addEventListener('focusout', (event) => {
   inputFieldHasFocus = false;
 })
 
-inputElement.addEventListener('input', inputHandler);
-inputElement.addEventListener('propertychange', inputHandler);
+inputElement?.addEventListener('input', inputHandler);
+inputElement?.addEventListener('propertychange', inputHandler);
 
 
 

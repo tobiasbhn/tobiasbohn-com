@@ -51,31 +51,28 @@ body, html {
   }
 }
 
-.tb-content-wrapper {
-  h1 {
-    font-size: 2.5rem;
-    line-height: 2.5rem;
-    margin-bottom: 1rem;
-  }
-  h2 {
-    font-size: 2rem;
-    line-height: 2rem;
-    margin-bottom: 1rem;
-  }
+.tb-content h1 {
+  font-size: 2.5rem;
+  line-height: 2.5rem;
+  margin-bottom: 1rem;
+}
 
-  img {
-    border-radius: 3px;
-  }
+.tb-content h2 {
+  font-size: 2rem;
+  line-height: 2rem;
+  margin-bottom: 1rem;
+}
 
-  a {
-    color: revert;
-    text-decoration: revert;
-    background-color: rgba(255, 255, 255, 0.7);
+.tb-content img {
+  border-radius: 3px;
+}
 
-    &::after {
-      content: '';
-      background: image-url("link.svg") center right no-repeat;
-      padding-right: 27px;
-    }
+a:not(.hide-link-icon) {
+  text-decoration: underline;
+
+  &::after {
+    content: '';
+    background: image-url("link_white.svg") center right no-repeat;
+    padding-right: 27px;
   }
 }

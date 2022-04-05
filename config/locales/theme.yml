@@ -40,8 +40,11 @@ de:
       single_tag_selector:
         title: "single_tag_selector"
         hint: ""
-      multi_tags_selector:
-        title: "multi_tags_selector"
+      tags_selector:
+        title: "tags_selector"
+        hint: ""
+      skills_selector:
+        title: "skills_selector"
         hint: ""
 en:
   theme:
@@ -85,6 +88,9 @@ en:
       single_tag_selector:
         title: "single_tag_selector"
         hint: ""
-      multi_tags_selector:
-        title: "multi_tags_selector"
+      tags_selector:
+        title: "tags_selector"
+        hint: ""
+      skills_selector:
+        title: "skills_selector"
         hint: ""

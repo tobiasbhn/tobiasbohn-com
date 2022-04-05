@@ -33,7 +33,8 @@ Spina::Theme.register do |theme|
     { name: 'main_image', title: I18n.t('theme.parts.main_image.title'), part_type: "Spina::Parts::Image", hint: I18n.t('theme.parts.main_image.hint') },
     { name: 'image_collection', title: I18n.t('theme.parts.image_collection.title'), part_type: "Spina::Parts::ImageCollection", hint: I18n.t('theme.parts.image_collection.hint') },
     { name: 'single_tag_selector', title: I18n.t('theme.parts.single_tag_selector.title'), part_type: "Spina::Parts::Tag", hint: I18n.t('theme.parts.single_tag_selector.hint') },
-    { name: 'multi_tags_selector', title: I18n.t('theme.parts.multi_tags_selector.title'), part_type: "Spina::Parts::Repeater", parts: %w(single_tag_selector), hint: I18n.t('theme.parts.multi_tags_selector.hint') },
+    { name: 'tags_selector', title: I18n.t('theme.parts.tags_selector.title'), part_type: "Spina::Parts::Repeater", parts: %w(single_tag_selector), hint: I18n.t('theme.parts.tags_selector.hint') },
+    { name: 'skills_selector', title: I18n.t('theme.parts.skills_selector.title'), part_type: "Spina::Parts::Repeater", parts: %w(single_tag_selector), hint: I18n.t('theme.parts.skills_selector.hint') },
 
     { name: 'footer', title: I18n.t('theme.parts.footer.title'), part_type: "Spina::Parts::Text", hint: I18n.t('theme.parts.footer.hint') },
   ]
@@ -43,13 +44,13 @@ Spina::Theme.register do |theme|
   # You define which parts you want to enable for every view template
   # by referencing them from the theme.parts configuration above.
   theme.view_templates = [
-    { name: 'homepage', title: I18n.t('theme.homepage'), parts: %w(home_welcome home_sub_heading home_introduction home_main_image home_projects home_skills multi_tags_selector) },
-    { name: 'legal_template', title: I18n.t('theme.legal'), parts: %w() },
-    { name: 'articles_template', title: I18n.t('theme.articles'), parts: %w() },
-    { name: 'projects_template', title: I18n.t('theme.projects'), parts: %w() },
+    { name: 'homepage', title: I18n.t('theme.homepage'), parts: %w(home_welcome home_sub_heading home_introduction home_main_image home_projects home_skills skills_selector) },
+    { name: 'legal_template', title: I18n.t('theme.legal'), parts: %w(rich_content) },
+    { name: 'articles_template', title: I18n.t('theme.articles'), parts: %w(rich_content) },
+    { name: 'projects_template', title: I18n.t('theme.projects'), parts: %w(rich_content) },
 
-    { name: 'article_template', title: I18n.t('theme.article'), exclude_from: ["projects", "tags"], parts: %w(main_image rich_content multi_tags_selector image_collection) },
-    { name: 'project_template', title: I18n.t('theme.project'), exclude_from: ["articles", "tags"], parts: %w(main_image rich_content multi_tags_selector image_collection) },
+    { name: 'article_template', title: I18n.t('theme.article'), exclude_from: ["projects", "tags"], parts: %w(main_image tags_selector rich_content image_collection) },
+    { name: 'project_template', title: I18n.t('theme.project'), exclude_from: ["articles", "tags"], parts: %w(main_image tags_selector rich_content image_collection skills_selector) },
     { name: 'tag_template', title: I18n.t('theme.tag'), exclude_from: ["articles", "projects"], parts: %w(main_image) },
   ]
 

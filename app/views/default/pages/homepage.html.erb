@@ -8,11 +8,11 @@
 
 
 
-<section class="flex flex-col tb-content-wrapper mb-40">
+<section class="flex flex-col tb-content mb-40">
   <h1 class="order-3 !mb-1"><%= current_page.title %></h1>
   <h2 class="order-4 !mb-10"><%= content :home_sub_heading %></h2>
   <p class="order-5 mb-4"><%= content :home_introduction %></p>
-  <%= content.image_tag :home_main_image, {}, { class: "order-6" } %>
+  <%= content.image_tag :home_main_image, {}, { class: "order-6 rounded drop-shadow" } %>
 
 
   <p class="order-1 mb-4 text-5xl sm:!text-6xl">
@@ -42,16 +42,5 @@
 
 <section class="mb-40 tb-content-wrapper">
   <%= content.html :home_skills %>
-
-  <ul class="flex flex-wrap items-start justify-around gap-1 mt-4">
-    <% repeater(:multi_tags_selector) do |tag| %>
-      <% tag_page = tag.content(:single_tag_selector) %>
-      <% if tag_page.present? && tag_page.content(:main_image).present? %>
-        <li>
-          <%= tag_page&.content&.image_tag :main_image, {}, { class: "w-28 h-28", title: "#{ tag_page.title }" } %>
-          <span class="sr-only"><%= tag_page.title %></span>
-        </li>
-      <% end %>
-    <% end %>
-  </ul>
+  <%= render 'default/shared/skills_selector', skills_selector: current_page.content(:skills_selector) %>
 </section>
