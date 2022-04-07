@@ -46,6 +46,13 @@ de:
       skills_selector:
         title: "skills_selector"
         hint: ""
+      footer:
+        title: "footer"
+        hint: ""
+      footer_text:
+        title: "footer_text"
+        hint: ""
+
 en:
   theme:
     homepage: "Home"
@@ -93,4 +100,10 @@ en:
         hint: ""
       skills_selector:
         title: "skills_selector"
+        hint: ""
+      footer:
+        title: "footer"
+        hint: ""
+      footer_text:
+        title: "footer_text"
         hint: ""

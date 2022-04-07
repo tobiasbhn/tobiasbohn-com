@@ -37,6 +37,7 @@ Spina::Theme.register do |theme|
     { name: 'skills_selector', title: I18n.t('theme.parts.skills_selector.title'), part_type: "Spina::Parts::Repeater", parts: %w(single_tag_selector), hint: I18n.t('theme.parts.skills_selector.hint') },
 
     { name: 'footer', title: I18n.t('theme.parts.footer.title'), part_type: "Spina::Parts::Text", hint: I18n.t('theme.parts.footer.hint') },
+    { name: 'footer_text', title: I18n.t('theme.parts.footer_text.title'), part_type: "Spina::Parts::MultiLine", hint: I18n.t('theme.parts.footer_text.hint') },
   ]
 
   # View templates
@@ -74,7 +75,7 @@ Spina::Theme.register do |theme|
   # Layout parts (optional)
   # You can create global content that doesn't belong to one specific page. We call these layout parts.
   # You only have to reference the name of the parts you want to have here.
-  theme.layout_parts = %w(footer)
+  theme.layout_parts = %w(footer footer_text)
 
   # Resources (optional)
   # Think of resources as a collection of pages. They are managed separately in Spina

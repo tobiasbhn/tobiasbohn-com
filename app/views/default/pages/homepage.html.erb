@@ -2,7 +2,12 @@
   <section class="flex flex-col tb-content mb-40">
     <h1 class="order-3 !mb-1"><%= current_page.title %></h1>
     <h2 class="order-4 !mb-10"><%= content :home_sub_heading %></h2>
-    <p class="order-5 mb-4"><%= content :home_introduction %></p>
+    <p class="order-5 mb-4">
+      <%= I18n.t('home.alright') %>
+      <span class="fill-name"></span>
+      &ndash;&nbsp;<%= I18n.t('home.going_to_introduce') %>
+      <%= content :home_introduction %>
+    </p>
     <%= content.image_tag :home_main_image, {}, { class: "order-6 rounded drop-shadow" } %>
 
 

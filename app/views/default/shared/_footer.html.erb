@@ -1,0 +1,9 @@
+<section class="mb-40 tb-content-wrapper text-center">
+  <p class="mb-4 !text-left">
+    <%= I18n.t('home.ok') %>
+    <span class="fill-name"></span>
+    &ndash;&nbsp;<%= I18n.t('home.thats_it') %>
+    <%= current_account.content :footer_text %>
+  </p>
+  <%= current_account.content.html :footer %>
+</section>

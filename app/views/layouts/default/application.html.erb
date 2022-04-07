@@ -23,9 +23,7 @@
       <main class="basis-full lg:basis-auto max-w-[63ch] mt-40 px-5">
         <%= yield %>
 
-        <section class="mb-40 tb-content-wrapper text-center">
-          <%= current_account.content.html :footer %>
-        </section>
+        <%= render 'default/shared/footer' %>
       </main>
     </div>
 

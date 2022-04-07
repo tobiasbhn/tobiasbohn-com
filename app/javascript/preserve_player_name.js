@@ -11,6 +11,12 @@ export const updateLinks = function (name) {
     }
     pageLinks[i].href = url;
   }
+
+  // update all other name-fillers
+  var nameTargets = document.getElementsByClassName("fill-name");
+  for (var i = 0; i < nameTargets.length; i++) {
+    nameTargets[i].innerHTML = name;
+  }
 }
 
 // trigger name update on page load
