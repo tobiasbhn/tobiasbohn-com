@@ -3,8 +3,8 @@
   <%= link_to "Tobias Bohn", home_page.materialized_path, class: "update-user-name" %>
   <%= render ('shared/icons/chevron-right') %>
 
-  <% resource_name = current_page.resource.name %>
-  <% resource_index_page = Spina::Page.find_by(name: resource_name) %>
+  <% resource_name = current_page.resource&.name %>
+  <% resource_index_page = Spina::Page.find_by(name: resource_name) if resource_name.present? %>
   <% if resource_index_page.present? %>
     <%= link_to resource_index_page.menu_title, resource_index_page.materialized_path, class: "update-user-name" %>
     <%= render ('shared/icons/chevron-right') %>

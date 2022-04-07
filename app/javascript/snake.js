@@ -2,7 +2,7 @@
 import "channels"
 
 const snakeboard = document.getElementById("snakeCanvas");
-const snakeboard_ctx = snakeboard.getContext("2d");
+const snakeboard_ctx = snakeboard?.getContext("2d");
 
 var tilesPerWidth = 25.0;
 var tileSize = 20;
@@ -75,7 +75,7 @@ function drawSnakeInfo(snake, color) {
     return;
   }
 
-  var displayName = snake["name"] == null ? "Anonymous" : snake["name"];
+  var displayName = snake["name"]?.length > 0 ? snake["name"] : "Anonymous";
   displayName = snake["self"] ? displayName + " (You)" : displayName;
 
 

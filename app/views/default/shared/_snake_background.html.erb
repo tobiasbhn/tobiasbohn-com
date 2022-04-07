@@ -1,0 +1,9 @@
+<% content_for :head do %>
+  <%= javascript_import_module_tag "snake" %>
+<% end %>
+
+<% content_for :game do %>
+  <canvas id="snakeCanvas"></canvas>
+<% end %>
+
+<%= yield %>

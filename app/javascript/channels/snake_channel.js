@@ -1,5 +1,6 @@
 import consumer from "channels/consumer"
-import { drawSnakeGame, clearBoard } from "../snake";
+import { drawSnakeGame, clearBoard } from "snake";
+import { updateLinks } from "preserve_player_name";
 
 const channel = consumer.subscriptions.create("SnakeChannel", {
   connected() {
@@ -26,18 +27,7 @@ var updatePlayerName = null;
 const updateNewName = function (name) {
   // save name to send via websocket (only if player interacts)
   updatePlayerName = name;
-
-  // update all target links with name param (for redirect to pages without input field)
-  var pageLinks = document.getElementsByClassName("update-user-name");
-  for (var i = 0; i < pageLinks.length; i++) {
-    var url = new URL(pageLinks[i]);
-    if (name?.length > 0) {
-      url.searchParams.set('name', name);
-    } else {
-      url.searchParams.delete('name');
-    }
-    pageLinks[i].href = url;
-  }
+  updateLinks(name);
 }
 
 
