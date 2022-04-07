@@ -3,6 +3,7 @@ require 'singleton'
 
 class SnakeGame
   include Singleton
+  attr_accessor :foods
 
   TILES = 30
 
@@ -45,7 +46,7 @@ class SnakeGame
   end
 
   def game_update
-    puts "Update Game."
+    # puts "Update Game."
     update_players()
     check_collisions()
     update_foods()
@@ -83,6 +84,7 @@ class SnakeGame
     # reset collision players
     to_reset.each do |player|
       player.reset([SnakeGame::TILES / 2, 4])
+      player.food.remove
     end
   end
 
@@ -98,8 +100,7 @@ class SnakeGame
       end
 
       # delete food if eaten
-      @foods.delete(food) if del_food
-      food.owner.food = nil if del_food
+      food.remove() if del_food
     end
   end
 

@@ -33,7 +33,7 @@ Spina.configure do |config|
   # ===============
   # The parent controller all frontend Spina controllers inherit from
   # Defaults to ApplicationController
-  # config.frontend_parent_controller = "ApplicationController"
+  config.frontend_parent_controller = "PagesController"
 
   # Authentication
   # ===============

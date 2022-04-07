@@ -12,7 +12,6 @@ class SnakePlayer
   end
 
   def update
-    puts "UPDATE PLAYER"
     if @direction.present?
       @head[0] += direction_to_velocity[0]
       @head[1] += direction_to_velocity[1]
