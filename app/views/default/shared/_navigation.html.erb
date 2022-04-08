@@ -1,23 +1,46 @@
-<nav class="w-full flex flex-col items-end relative">
-  <button data-collapse-toggle="main-menu" id="main-menu-button" type="button" class="inline-flex items-center" aria-controls="main-menu" aria-expanded="false">
-    <span class="sr-only">Open main menu</span>
-    <svg class="w-10 h-10" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M3 5a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM3 10a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM3 15a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1z" clip-rule="evenodd"></path></svg>
+<nav class="w-full flex flex-row justify-end relative gap-6">
+
+  <%# Open Menu Button %>
+  <button data-collapse-toggle="main-menu" id="main-menu-button" type="button" class="inline-flex items-center" aria-controls="main-menu" aria-expanded="false" title="<%= I18n.t('home.open_main_menu') %>">
+    <span class="sr-only"><%= I18n.t('home.open_main_menu') %></span>
+    <%= render 'shared/icons/menu-alt-3' %>
   </button>
 
-  <div class="hidden absolute w-full sm:w-auto bottom-0 right-0 translate-y-full z-50 py-2 sm:px-2" id="main-menu">
+  <%# Locale Button %>
+  <% existing_locales = current_page.translations.pluck(:locale).map(&:to_sym) %>
+  <% current_locale = params[:locale]&.to_sym || I18n.default_locale&.to_sym %>
+  <% target_locale = (existing_locales - [current_locale]).first %>
+
+  <% if target_locale.present? %>
+    <% text = I18n.t('home.toggle_language', locale: target_locale) + " " + I18n.t("spina.languages.#{target_locale}", locale: target_locale) %>
+    <%= link_to current_page.materialized_path(locale: target_locale), class: "inline-flex items-center hide-link-icon whitespace-nowrap update-user-name gap-1", title: text, lang: target_locale do %>
+      <span class="sr-only"><%= text %></span>
+      <%= render('shared/icons/globe') %>
+      <span aria-hidden="true"><%= target_locale.to_s.upcase %></span>
+    <% end %>
+  <% end %>
+
+  <%# Main Navigation %>
+  <div class="hidden absolute w-full sm:w-auto -bottom-2 right-0 translate-y-full z-50 py-2 sm:px-2" id="main-menu">
     <ul class="py-1 list-none bg-gray-100 rounded shadow" aria-labelledby="main-menu-button">
-      <li>
-        <a href="#" class="block py-2 px-4 sm:!px-8 text-gray-700 hover:bg-gray-50">Dashboard</a>
-      </li>
-      <li>
-        <a href="#" class="block py-2 px-4 sm:!px-8 text-gray-700 hover:bg-gray-50">Settings</a>
-      </li>
-      <li>
-        <a href="#" class="block py-2 px-4 sm:!px-8 text-gray-700 hover:bg-gray-50">Earnings</a>
-      </li>
-      <li>
-        <a href="#" class="block py-2 px-4 sm:!px-8 text-gray-700 hover:bg-gray-50">Sign out</a>
-      </li>
+      <% nav = Spina::Navigation.find_by(name: 'main') %>
+      <% items = nav.navigation_items.regular_pages.sorted.live.in_menu.active %>
+
+      <% nav_items = [].tap do |out| %>
+        <% items.each do |item| %>
+          <% if item.page&.translations&.pluck(:locale)&.map(&:to_sym).include?(current_locale) && item.page&.materialized_path %>
+            <% out << [item.page.menu_title, item.page.materialized_path] %>
+          <% end %>
+        <% end %>
+      <% end %>
+
+      <% classes = "block py-2 px-4 sm:!px-8 text-gray-700 hover:bg-gray-50 hide-link-icon whitespace-nowrap update-user-name" %>
+      <% nav_items.each do |item| %>
+        <li>
+          <%= link_to item[0], item[1], class: classes, title: item[0] %>
+        </li>
+      <% end %>
     </ul>
   </div>
+
 </nav>

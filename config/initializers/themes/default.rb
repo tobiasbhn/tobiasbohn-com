@@ -25,7 +25,6 @@ Spina::Theme.register do |theme|
     { name: 'home_sub_heading', title: I18n.t('theme.parts.home_sub_heading.title'), part_type: "Spina::Parts::Line", hint: I18n.t('theme.parts.home_sub_heading.hint') },
     { name: 'home_introduction', title: I18n.t('theme.parts.home_introduction.title'), part_type: "Spina::Parts::MultiLine", hint: I18n.t('theme.parts.home_introduction.hint') },
     { name: 'home_main_image', title: I18n.t('theme.parts.home_main_image.title'), part_type: "Spina::Parts::Image", hint: I18n.t('theme.parts.home_main_image.hint') },
-
     { name: 'home_projects', title: I18n.t('theme.parts.home_projects.title'), part_type: "Spina::Parts::Text", hint: I18n.t('theme.parts.home_projects.hint') },
     { name: 'home_skills', title: I18n.t('theme.parts.home_skills.title'), part_type: "Spina::Parts::Text", hint: I18n.t('theme.parts.home_skills.hint') },
 
@@ -46,13 +45,9 @@ Spina::Theme.register do |theme|
   # by referencing them from the theme.parts configuration above.
   theme.view_templates = [
     { name: 'homepage', title: I18n.t('theme.homepage'), parts: %w(home_welcome home_sub_heading home_introduction home_main_image home_projects home_skills skills_selector) },
-    { name: 'legal_template', title: I18n.t('theme.legal'), parts: %w(rich_content) },
-    { name: 'articles_template', title: I18n.t('theme.articles'), parts: %w(rich_content) },
-    { name: 'projects_template', title: I18n.t('theme.projects'), parts: %w(rich_content) },
-
-    { name: 'article_template', title: I18n.t('theme.article'), exclude_from: ["projects", "tags"], parts: %w(main_image tags_selector rich_content image_collection) },
-    { name: 'project_template', title: I18n.t('theme.project'), exclude_from: ["articles", "tags"], parts: %w(main_image tags_selector rich_content image_collection skills_selector) },
-    { name: 'tag_template', title: I18n.t('theme.tag'), exclude_from: ["articles", "projects"], parts: %w(main_image) },
+    { name: 'default_template', title: I18n.t('theme.default_template'), parts: %w(rich_content) },
+    { name: 'page_template', title: I18n.t('theme.page_template'), parts: %w(rich_content) },
+    { name: 'resource_template', title: I18n.t('theme.resource_template'), parts: %w(main_image tags_selector rich_content image_collection skills_selector) },
   ]
 
   # Custom pages
@@ -60,9 +55,9 @@ Spina::Theme.register do |theme|
   # By naming them you can reference them in your code.
   theme.custom_pages = [
     { name: 'homepage', title: I18n.t('theme.homepage'), deletable: false, view_template: "homepage" },
-    { name: 'legal', title: I18n.t('theme.legal'), deletable: false, view_template: "legal_template" },
-    { name: 'articles', title: I18n.t('theme.articles'), deletable: false, view_template: "articles_template" },
-    { name: 'projects', title: I18n.t('theme.projects'), deletable: false, view_template: "projects_template" },
+    { name: 'legal', title: I18n.t('theme.legal'), deletable: false, view_template: "page_template" },
+    { name: 'articles', title: I18n.t('theme.articles'), deletable: false, view_template: "page_template" },
+    { name: 'projects', title: I18n.t('theme.projects'), deletable: false, view_template: "page_template" },
   ]
 
   # Navigations (optional)
@@ -81,9 +76,9 @@ Spina::Theme.register do |theme|
   # Think of resources as a collection of pages. They are managed separately in Spina
   # allowing you to separate these pages from the 'main' collection of pages.
   theme.resources = [
-    { name: "articles", label: I18n.t('theme.articles'), view_template: "article_template", slug_en: I18n.t('theme.articles', locale: :en), slug_de: I18n.t('theme.articles', locale: :de), order_by: "" },
-    { name: "projects", label: I18n.t('theme.projects'), view_template: "project_template", slug_en: I18n.t('theme.projects', locale: :en), slug_de: I18n.t('theme.projects', locale: :de), order_by: "" },
-    { name: "tags", label: I18n.t('theme.tags'), view_template: "tag_template", slug_en: I18n.t('theme.tags', locale: :en), slug_de: I18n.t('theme.tags', locale: :de), order_by: "" },
+    { name: "articles", label: I18n.t('theme.articles'), view_template: "resource_template", slug_en: I18n.t('theme.articles', locale: :en), slug_de: I18n.t('theme.articles', locale: :de), order_by: "" },
+    { name: "projects", label: I18n.t('theme.projects'), view_template: "resource_template", slug_en: I18n.t('theme.projects', locale: :en), slug_de: I18n.t('theme.projects', locale: :de), order_by: "" },
+    { name: "tags", label: I18n.t('theme.tags'), view_template: "default_template", slug_en: I18n.t('theme.tags', locale: :en), slug_de: I18n.t('theme.tags', locale: :de), order_by: "" },
   ]
 
   # Plugins (optional)

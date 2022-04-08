@@ -1,5 +1,7 @@
 en:
   home:
+    open_main_menu: "Open main menu"
+    toggle_language: "Display page in"
     name_query: "What may I call you?"
     for_snake: "for Snake."
     or: "or"

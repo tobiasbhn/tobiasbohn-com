@@ -1,5 +1,7 @@
 de:
   home:
+    open_main_menu: "Hauptmenü öffnen"
+    toggle_language: "Sprache ändern zu"
     name_query: "Wie darf ich dich nennen?"
     for_snake: "für Snake."
     or: "oder"

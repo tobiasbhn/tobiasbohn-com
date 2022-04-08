@@ -1,12 +1,12 @@
 de:
   theme:
     homepage: "Home"
+    default_template: "Standart Vorlage"
+    resource_template: "Ressourcen Vorlage"
+    page_template: "Standartseiten Vorlage"
     legal: "Impressum"
-    article: "Artikel"
     articles: "Artikel"
-    project: "Projekt"
     projects: "Projekte"
-    tag: "Tag"
     tags: "Tags"
     mainmenu: "Hauptmenü"
     parts:
@@ -56,12 +56,12 @@ de:
 en:
   theme:
     homepage: "Home"
+    default_template: "Default Template"
+    resource_template: "Resource Template"
+    page_template: "Custom Page Template"
     legal: "Legal"
-    article: "Article"
     articles: "Articles"
-    project: "Project"
     projects: "Projects"
-    tag: "Tag"
     tags: "Tags"
     mainmenu: "Main Menu"
     parts:
