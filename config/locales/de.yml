@@ -1,12 +1,10 @@
 de:
   home:
     open_main_menu: "Hauptmenü öffnen"
-    toggle_language: "Sprache ändern zu"
+    toggle_language: "Sprache ändern"
     name_query: "Wie darf ich dich nennen?"
     for_snake: "für Snake."
     or: "oder"
     arrow_keys: "Pfeiltasten"
     alright: "Alles klar"
-    going_to_introduce: "dann stell ich mich mal vor."
     ok: "Ok"
-    thats_it: "das wars dann auch schon."

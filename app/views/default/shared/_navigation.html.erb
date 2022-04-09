@@ -1,31 +1,47 @@
-<nav class="w-full flex flex-row justify-end relative gap-6">
+<nav class="flex flex-row justify-end relative gap-5 max-w-[63ch] mx-auto px-3">
 
-  <%# Open Menu Button %>
-  <button data-collapse-toggle="main-menu" id="main-menu-button" type="button" class="inline-flex items-center" aria-controls="main-menu" aria-expanded="false" title="<%= I18n.t('home.open_main_menu') %>">
-    <span class="sr-only"><%= I18n.t('home.open_main_menu') %></span>
-    <%= render 'shared/icons/menu-alt-3' %>
-  </button>
-
-  <%# Locale Button %>
+  <%# Language Button %>
   <% existing_locales = current_page.translations.pluck(:locale).map(&:to_sym) %>
   <% current_locale = params[:locale]&.to_sym || I18n.default_locale&.to_sym %>
-  <% target_locale = (existing_locales - [current_locale]).first %>
+  <% target_locales = (existing_locales - [current_locale]) %>
 
-  <% if target_locale.present? %>
-    <% text = I18n.t('home.toggle_language', locale: target_locale) + " " + I18n.t("spina.languages.#{target_locale}", locale: target_locale) %>
-    <%= link_to current_page.materialized_path(locale: target_locale), class: "inline-flex items-center hide-link-icon whitespace-nowrap update-user-name gap-1", title: text, lang: target_locale do %>
-      <span class="sr-only"><%= text %></span>
-      <%= render('shared/icons/globe') %>
-      <span aria-hidden="true"><%= target_locale.to_s.upcase %></span>
-    <% end %>
+  <% if target_locales.count > 0 %>
+    <button data-collapse-toggle="language-menu" id="language-menu-button" type="button" class="inline-flex items-center" aria-controls="language-menu" aria-expanded="false" title="<%= I18n.t('home.toggle_language') %>">
+      <span class="sr-only"><%= I18n.t('home.toggle_language') %></span>
+        <%= render 'shared/icons/globe', classes: "w-7 h-7 sm:hidden" %>
+        <%= render 'shared/icons/globe', classes: "w-8 h-8 hidden sm:block lg:hidden" %>
+        <%= render 'shared/icons/globe', classes: "w-9 h-9 hidden lg:block" %>
+    </button>
+
+    <%# Language Menu %>
+    <div class="hidden absolute w-full px-4 sm:w-auto -bottom-2 right-0 translate-y-full z-50 py-2 sm:px-2" id="language-menu">
+      <ul class="py-1 list-none bg-gray-100 rounded shadow" aria-labelledby="language-menu-button">
+        <% classes = "block py-2 px-4 sm:!px-8 text-gray-700 hover:bg-gray-50 hide-link-icon whitespace-nowrap update-user-name" %>
+        <% target_locales.each do |locale| %>
+          <li>
+            <% text = I18n.t("spina.languages.#{locale}", locale: locale) %>
+            <%= link_to text, current_page.materialized_path(locale: locale), class: classes, title: text, lang: locale %>
+          </li>
+        <% end %>
+      </ul>
+    </div>
   <% end %>
 
-  <%# Main Navigation %>
-  <div class="hidden absolute w-full sm:w-auto -bottom-2 right-0 translate-y-full z-50 py-2 sm:px-2" id="main-menu">
+  <%# Menu Button %>
+  <button data-collapse-toggle="main-menu" id="main-menu-button" type="button" class="inline-flex items-center" aria-controls="main-menu" aria-expanded="false" title="<%= I18n.t('home.open_main_menu') %>">
+    <span class="sr-only"><%= I18n.t('home.open_main_menu') %></span>
+    <%= render 'shared/icons/menu-alt-3', classes: "w-8 h-8 sm:hidden" %>
+    <%= render 'shared/icons/menu-alt-3', classes: "w-9 h-9 hidden sm:block lg:hidden" %>
+    <%= render 'shared/icons/menu-alt-3', classes: "w-10 h-10 hidden lg:block" %>
+  </button>
+
+  <%# Main Menu %>
+  <div class="hidden absolute w-full px-4 sm:w-auto -bottom-2 right-0 translate-y-full z-50 py-2" id="main-menu">
     <ul class="py-1 list-none bg-gray-100 rounded shadow" aria-labelledby="main-menu-button">
       <% nav = Spina::Navigation.find_by(name: 'main') %>
       <% items = nav.navigation_items.regular_pages.sorted.live.in_menu.active %>
 
+      <% current_locale = params[:locale]&.to_sym || I18n.default_locale&.to_sym %>
       <% nav_items = [].tap do |out| %>
         <% items.each do |item| %>
           <% if item.page&.translations&.pluck(:locale)&.map(&:to_sym).include?(current_locale) && item.page&.materialized_path %>

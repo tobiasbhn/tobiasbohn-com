@@ -1,12 +1,10 @@
 en:
   home:
     open_main_menu: "Open main menu"
-    toggle_language: "Display page in"
+    toggle_language: "Change Language"
     name_query: "What may I call you?"
     for_snake: "for Snake."
     or: "or"
     arrow_keys: "Arrow Keys"
     alright: "Alright"
-    going_to_introduce: "let me introduce myself."
     ok: "Ok"
-    thats_it: "there you go."
