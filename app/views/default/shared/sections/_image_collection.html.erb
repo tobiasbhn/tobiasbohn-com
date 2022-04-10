@@ -1,0 +1,12 @@
+<section class="w-full tb-content mb-40">
+  <div class="w-full max-w-prose mx-[10%] xl:mx-[15%] px-3">
+    <h2 class="!text-5xl">Bilder</h2>
+  </div>
+  <ul class="w-full list-none columns-2 md:columns-3 xl:columns-4 gap-4">
+    <% images(image_collection) do |image| %>
+      <li class="w-full my-4 first:!mt-0">
+        <%= content.image_tag(image, { loader: { page: nil } }, { class: "rounded w-full object-cover drop-shadow max-h-[40vh]" }) %>
+      </li>
+    <% end %>
+  </ul>
+</section>

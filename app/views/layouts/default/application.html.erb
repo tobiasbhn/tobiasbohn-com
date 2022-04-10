@@ -14,14 +14,12 @@
   </head>
 
   <body class="text-gray-300 text-xl font-serif bg-neutral-800">
-    <main class="flex flex-col items-center lg:items-start relative pt-40">
-      <div class="w-full lg:self-end lg:w-auto fixed lg:mx-[10%] xl:mx-[15%] py-2 lg:py-0 top-0 lg:top-auto bg-gray-100 text-black lg:bg-transparent lg:text-inherit z-10">
-        <%= render 'default/shared/navigation' %>
-      </div>
-
-      <%= yield %>
-      <%= render 'default/shared/footer' %>
-    </main>
+    <div class="flex flex-col items-center lg:items-start relative pt-40">
+      <%= render 'default/shared/navigation' %>
+      <%= render 'default/shared/sections/breadcrumbs' %>
+      <main class="w-full pt-6"><%= yield %></main>
+      <%= render 'default/shared/sections/footer' %>
+    </div>
 
     <%= yield(:game) %>
   </body>

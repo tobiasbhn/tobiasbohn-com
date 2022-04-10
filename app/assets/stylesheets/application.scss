@@ -64,6 +64,7 @@ body, html {
 
 .tb-content img {
   border-radius: 3px;
+  width: 100%;
 }
 
 a:not(.hide-link-icon) {
@@ -73,5 +74,13 @@ a:not(.hide-link-icon) {
     content: '';
     background: image-url("link_white.svg") center right no-repeat;
     padding-right: 27px;
+  }
+}
+
+.gallery-filler {
+  &::after {
+    content: '';
+    display: block;
+    flex-grow: 10;
   }
 }

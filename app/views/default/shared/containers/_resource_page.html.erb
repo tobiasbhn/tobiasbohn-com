@@ -1,0 +1,13 @@
+<%= render 'default/shared/snake_background' do %>
+
+  <section class="w-full max-w-prose mx-[10%] xl:mx-[15%] px-3 tb-content mb-40">
+    <h1 class="mb-4"><%= current_page.title %></h1>
+    <%= content.image_tag(:main_image, { loader: { page: nil } }, { class: "rounded drop-shadow mb-4" }) %>
+    <%= content.html(:rich_content) %>
+  </section>
+
+  <%= render 'default/shared/sections/skills_selector', skills_selector: current_page.content(:skills_selector) %>
+
+  <%= render 'default/shared/sections/image_collection', image_collection: content(:image_collection) %>
+
+<% end %>

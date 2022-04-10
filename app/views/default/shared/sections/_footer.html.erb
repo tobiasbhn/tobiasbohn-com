@@ -1,0 +1,8 @@
+<footer class="mb-40 tb-content text-center w-full max-w-prose mx-[10%] xl:mx-[15%] px-3">
+  <p class="mb-4 !text-left">
+    <%= I18n.t('home.ok') %>
+    <span class="fill-name"></span>
+    &ndash;&nbsp;<%= current_account.content :footer_text %>
+  </p>
+  <%= current_account.content.html :footer %>
+</footer>
