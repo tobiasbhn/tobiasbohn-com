@@ -2,10 +2,6 @@ Spina.configure do |config|
   # Tailwind Content
   config.tailwind_content << Rails.root.join("app/views/spina/**")
 
-  config.importmap.draw do
-    pin_all_from "app/javascript/spina/controllers", under: "controllers", to: "spina/controllers"
-  end
-
   # Locales
   # ===============
   # All locales your content should be available in.

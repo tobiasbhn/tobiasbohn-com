@@ -1,0 +1,21 @@
+<% part_names = current_theme.parts.find{|p|p[:name].to_s == f.object.name.to_s}&.dig(:parts) || [] %>
+<% builded_parts = build_parts(f.object, part_names) %>
+<% select_options = builded_parts&.map {|p|[p.title,p.name]} %>
+
+<div data-controller="dynamic">
+  <div class="mt-6">
+    <label class="block text-sm leading-5 font-medium text-gray-700"><%= f.object.title %></label>
+    <div class="text-gray-400 text-sm"><%= f.object.hint %></div>
+    <%= f.select :target, select_options, { include_blank: t("spina.options.choose_option") }, { class: "form-select mt-1", data: { action: "dynamic#updateSelects", part_id: f.object.object_id, dynamic_target: "select" }} %>
+  </div>
+
+  <%= f.fields_for :dynamic_part, builded_parts do |ff| %>
+    <%= ff.hidden_field :title %>
+    <%= ff.hidden_field :type, value: ff.object.class %>
+    <%= ff.hidden_field :name %>
+
+    <div data-dynamic-target="parts" data-type="<%= ff.object.name %>" data-part-id="<%= f.object.object_id %>">
+      <%= render "spina/admin/parts/#{parts_partial_namespace(ff.object.class.to_s)}/form", f: ff %>
+    </div>
+  <% end %>
+</div>
