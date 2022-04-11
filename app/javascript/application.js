@@ -1,5 +1,6 @@
 // Configure your import map in config/importmap.rb. Read more: https://github.com/rails/importmap-rails
 import "flowbite"
+import "controllers"
 
 // close main menu on background click or scroll
 const mainMenuElement = document.getElementById('main-menu');

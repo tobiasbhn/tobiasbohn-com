@@ -1,6 +1,10 @@
 Spina.configure do |config|
   # Tailwind Content
-  Spina.config.tailwind_content << Rails.root.join("app/views/spina/**")
+  config.tailwind_content << Rails.root.join("app/views/spina/**")
+
+  config.importmap.draw do
+    pin_all_from "app/javascript/spina/controllers", under: "controllers", to: "spina/controllers"
+  end
 
   # Locales
   # ===============

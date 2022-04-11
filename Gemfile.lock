@@ -270,6 +270,7 @@ DEPENDENCIES
   sassc-rails
   spina!
   sprockets-rails
+  stimulus-rails
   tailwindcss-rails
   tzinfo-data
   web-console
