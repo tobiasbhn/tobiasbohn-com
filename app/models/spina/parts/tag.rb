@@ -6,6 +6,10 @@ module Spina
       def content
         Spina::Page.where(id: tag_id).live.first
       end
+
+      def present?
+        tag_id.present?
+      end
     end
   end
 end

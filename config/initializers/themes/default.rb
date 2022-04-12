@@ -21,22 +21,39 @@ Spina::Theme.register do |theme|
   # - Option
   # - Repeater
   theme.parts = [
+    # Home Specials
+    { name: 'home_heading', title: I18n.t('theme.parts.home_heading.title'), part_type: "Spina::Parts::Line", hint: I18n.t('theme.parts.home_heading.hint') },
+    { name: 'home_text', title: I18n.t('theme.parts.home_text.title'), part_type: "Spina::Parts::MultiLine", hint: I18n.t('theme.parts.home_text.hint') },
+    { name: 'thumbnail', title: I18n.t('theme.parts.thumbnail.title'), part_type: "Spina::Parts::Image", hint: I18n.t('theme.parts.thumbnail.hint') },
     { name: 'home_welcome', title: I18n.t('theme.parts.home_welcome.title'), part_type: "Spina::Parts::Line", hint: I18n.t('theme.parts.home_welcome.hint') },
-    { name: 'home_sub_heading', title: I18n.t('theme.parts.home_sub_heading.title'), part_type: "Spina::Parts::Line", hint: I18n.t('theme.parts.home_sub_heading.hint') },
-    { name: 'home_introduction', title: I18n.t('theme.parts.home_introduction.title'), part_type: "Spina::Parts::MultiLine", hint: I18n.t('theme.parts.home_introduction.hint') },
-    { name: 'home_main_image', title: I18n.t('theme.parts.home_main_image.title'), part_type: "Spina::Parts::Image", hint: I18n.t('theme.parts.home_main_image.hint') },
-    { name: 'home_projects', title: I18n.t('theme.parts.home_projects.title'), part_type: "Spina::Parts::Text", hint: I18n.t('theme.parts.home_projects.hint') },
-    { name: 'home_skills', title: I18n.t('theme.parts.home_skills.title'), part_type: "Spina::Parts::Text", hint: I18n.t('theme.parts.home_skills.hint') },
 
-    { name: 'rich_content', title: I18n.t('theme.parts.rich_content.title'), part_type: "Spina::Parts::Text", hint: I18n.t('theme.parts.rich_content.hint') },
-    { name: 'main_image', title: I18n.t('theme.parts.main_image.title'), part_type: "Spina::Parts::Image", hint: I18n.t('theme.parts.main_image.hint') },
-    { name: 'image_collection', title: I18n.t('theme.parts.image_collection.title'), part_type: "Spina::Parts::ImageCollection", hint: I18n.t('theme.parts.image_collection.hint') },
-    { name: 'single_tag_selector', title: I18n.t('theme.parts.single_tag_selector.title'), part_type: "Spina::Parts::Tag", hint: I18n.t('theme.parts.single_tag_selector.hint') },
-    { name: 'tags_selector', title: I18n.t('theme.parts.tags_selector.title'), part_type: "Spina::Parts::Repeater", parts: %w(single_tag_selector), hint: I18n.t('theme.parts.tags_selector.hint') },
-    { name: 'skills_selector', title: I18n.t('theme.parts.skills_selector.title'), part_type: "Spina::Parts::Repeater", parts: %w(single_tag_selector), hint: I18n.t('theme.parts.skills_selector.hint') },
-
+    # Layout Specials
     { name: 'footer', title: I18n.t('theme.parts.footer.title'), part_type: "Spina::Parts::Text", hint: I18n.t('theme.parts.footer.hint') },
     { name: 'footer_text', title: I18n.t('theme.parts.footer_text.title'), part_type: "Spina::Parts::MultiLine", hint: I18n.t('theme.parts.footer_text.hint') },
+
+    # # Repeater Parts
+    { name: 'single_tag_selector', title: I18n.t('theme.parts.single_tag_selector.title'), part_type: "Spina::Parts::Tag", hint: I18n.t('theme.parts.single_tag_selector.hint') },
+    { name: 'single_project_selector', title: I18n.t('theme.parts.single_project_selector.title'), part_type: "Spina::Parts::Project", hint: I18n.t('theme.parts.single_project_selector.hint') },
+    { name: 'single_article_selector', title: I18n.t('theme.parts.single_article_selector.title'), part_type: "Spina::Parts::Article", hint: I18n.t('theme.parts.single_article_selector.hint') },
+
+    # SECTIONS
+    # Dynamic Contents
+    { name: 'image', title: I18n.t('theme.parts.image.title'), part_type: "Spina::Parts::Image", hint: I18n.t('theme.parts.image.hint') },
+    { name: 'images', title: I18n.t('theme.parts.images.title'), part_type: "Spina::Parts::ImageCollection", hint: I18n.t('theme.parts.images.hint') },
+    { name: 'tags', title: I18n.t('theme.parts.tags.title'), part_type: "Spina::Parts::Repeater", parts: %w(single_tag_selector), hint: I18n.t('theme.parts.tags.hint') },
+    { name: 'skills', title: I18n.t('theme.parts.skills.title'), part_type: "Spina::Parts::Repeater", parts: %w(single_tag_selector), hint: I18n.t('theme.parts.skills.hint') },
+    { name: 'projects', title: I18n.t('theme.parts.projects.title'), part_type: "Spina::Parts::Repeater", parts: %w(single_project_selector), hint: I18n.t('theme.parts.projects.hint') },
+    { name: 'articles', title: I18n.t('theme.parts.articles.title'), part_type: "Spina::Parts::Repeater", parts: %w(single_article_selector), hint: I18n.t('theme.parts.articles.hint') },
+    { name: 'rich', title: I18n.t('theme.parts.rich.title'), part_type: "Spina::Parts::Text", hint: I18n.t('theme.parts.rich.hint') },
+
+    # Main Section
+    { name: 'heading', title: I18n.t('theme.parts.heading.title'), part_type: "Spina::Parts::MultiLine", hint: I18n.t('theme.parts.heading.hint') },
+    { name: 'text_before', title: I18n.t('theme.parts.text_before.title'), part_type: "Spina::Parts::MultiLine", hint: I18n.t('theme.parts.text_before.hint') },
+    { name: 'dynamic', title: I18n.t('theme.parts.dynamic.title'), part_type: "Spina::Parts::Dynamic", parts: %w(image images tags skills projects articles rich), hint: I18n.t('theme.parts.dynamic.hint') },
+    { name: 'text_after', title: I18n.t('theme.parts.text_after.title'), part_type: "Spina::Parts::MultiLine", hint: I18n.t('theme.parts.text_after.hint') },
+
+    # Section Repeater
+    { name: 'sections_repeater', title: I18n.t('theme.parts.sections_repeater.title'), part_type: "Spina::Parts::Repeater", parts: %w(heading text_before dynamic text_after), hint: I18n.t('theme.parts.sections_repeater.hint') },
   ]
 
   # View templates
@@ -44,10 +61,11 @@ Spina::Theme.register do |theme|
   # You define which parts you want to enable for every view template
   # by referencing them from the theme.parts configuration above.
   theme.view_templates = [
-    { name: 'homepage', title: I18n.t('theme.homepage'), parts: %w(home_welcome home_sub_heading home_introduction home_main_image home_projects home_skills skills_selector) },
-    { name: 'default_template', title: I18n.t('theme.default_template'), parts: %w(rich_content) },
-    { name: 'page_template', title: I18n.t('theme.page_template'), parts: %w(rich_content) },
-    { name: 'resource_template', title: I18n.t('theme.resource_template'), parts: %w(main_image tags_selector rich_content image_collection skills_selector) },
+    { name: 'homepage', title: I18n.t('theme.homepage'), parts: %w(home_heading home_text home_welcome thumbnail sections_repeater) },
+    { name: 'articles', title: I18n.t('theme.articles'), parts: %w(sections_repeater) },
+    { name: 'projects', title: I18n.t('theme.projects'), parts: %w(sections_repeater) },
+    { name: 'snake', title: I18n.t('theme.snake_template'), parts: %w(thumbnail sections_repeater) },
+    { name: 'page', title: I18n.t('theme.page_template'), parts: %w(thumbnail sections_repeater) },
   ]
 
   # Custom pages
@@ -55,9 +73,8 @@ Spina::Theme.register do |theme|
   # By naming them you can reference them in your code.
   theme.custom_pages = [
     { name: 'homepage', title: I18n.t('theme.homepage'), deletable: false, view_template: "homepage" },
-    { name: 'legal', title: I18n.t('theme.legal'), deletable: false, view_template: "page_template" },
-    { name: 'articles', title: I18n.t('theme.articles'), deletable: false, view_template: "page_template" },
-    { name: 'projects', title: I18n.t('theme.projects'), deletable: false, view_template: "page_template" },
+    { name: 'articles', title: I18n.t('theme.articles'), deletable: false, view_template: "articles" },
+    { name: 'projects', title: I18n.t('theme.projects'), deletable: false, view_template: "projects" },
   ]
 
   # Navigations (optional)
@@ -70,7 +87,7 @@ Spina::Theme.register do |theme|
   # Layout parts (optional)
   # You can create global content that doesn't belong to one specific page. We call these layout parts.
   # You only have to reference the name of the parts you want to have here.
-  theme.layout_parts = %w(footer footer_text)
+  theme.layout_parts = %w(footer_text footer)
 
   # Resources (optional)
   # Think of resources as a collection of pages. They are managed separately in Spina

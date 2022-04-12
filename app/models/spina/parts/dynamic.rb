@@ -17,7 +17,7 @@ module Spina
       end
 
       def dynamic_part=(val)
-        if val.key?("type")
+        if val.blank? || val&.key?("type")
           super val
         else
           super val&.values&.find {|x| x["name"] == target }

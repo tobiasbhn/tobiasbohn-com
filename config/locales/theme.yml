@@ -1,109 +1,73 @@
 de:
   theme:
     homepage: "Home"
-    default_template: "Standart Vorlage"
-    resource_template: "Ressourcen Vorlage"
-    page_template: "Standartseiten Vorlage"
-    legal: "Impressum"
+    snake_template: "Vorlage mit Snake"
+    page_template: "Vorlage ohne Snake"
     articles: "Artikel"
     projects: "Projekte"
-    tags: "Tags"
     mainmenu: "Hauptmenü"
-    parts:
-      home_welcome:
-        title: "home_welcome"
-        hint: ""
-      home_sub_heading:
-        title: "home_sub_heading"
-        hint: ""
-      home_introduction:
-        title: "home_introduction"
-        hint: ""
-      home_main_image:
-        title: "home_main_image"
-        hint: ""
-      home_projects:
-        title: "home_projects"
-        hint: ""
-      home_skills:
-        title: "home_skills"
-        hint: ""
-      rich_content:
-        title: "rich_content"
-        hint: ""
-      main_image:
-        title: "main_image"
-        hint: ""
-      image_collection:
-        title: "image_collection"
-        hint: ""
-      single_tag_selector:
-        title: "single_tag_selector"
-        hint: ""
-      tags_selector:
-        title: "tags_selector"
-        hint: ""
-      skills_selector:
-        title: "skills_selector"
-        hint: ""
-      footer:
-        title: "footer"
-        hint: ""
-      footer_text:
-        title: "footer_text"
-        hint: ""
-
-en:
-  theme:
-    homepage: "Home"
-    default_template: "Default Template"
-    resource_template: "Resource Template"
-    page_template: "Custom Page Template"
-    legal: "Legal"
-    articles: "Articles"
-    projects: "Projects"
     tags: "Tags"
-    mainmenu: "Main Menu"
     parts:
+      home_heading:
+        title: "home_heading"
+        hint: "home_heading"
+      home_text:
+        title: "home_text"
+        hint: "home_text"
+      thumbnail:
+        title: "thumbnail"
+        hint: "thumbnail"
       home_welcome:
         title: "home_welcome"
-        hint: ""
-      home_sub_heading:
-        title: "home_sub_heading"
-        hint: ""
-      home_introduction:
-        title: "home_introduction"
-        hint: ""
-      home_main_image:
-        title: "home_main_image"
-        hint: ""
-      home_projects:
-        title: "home_projects"
-        hint: ""
-      home_skills:
-        title: "home_skills"
-        hint: ""
-      rich_content:
-        title: "rich_content"
-        hint: ""
-      main_image:
-        title: "main_image"
-        hint: ""
-      image_collection:
-        title: "image_collection"
-        hint: ""
-      single_tag_selector:
-        title: "single_tag_selector"
-        hint: ""
-      tags_selector:
-        title: "tags_selector"
-        hint: ""
-      skills_selector:
-        title: "skills_selector"
-        hint: ""
+        hint: "home_welcome"
       footer:
         title: "footer"
-        hint: ""
+        hint: "footer"
       footer_text:
         title: "footer_text"
-        hint: ""
+        hint: "footer_text"
+      single_tag_selector:
+        title: "single_tag_selector"
+        hint: "single_tag_selector"
+      single_project_selector:
+        title: "single_project_selector"
+        hint: "single_project_selector"
+      single_article_selector:
+        title: "single_article_selector"
+        hint: "single_article_selector"
+      image:
+        title: "image"
+        hint: "image"
+      images:
+        title: "images"
+        hint: "images"
+      tags:
+        title: "tags"
+        hint: "tags"
+      skills:
+        title: "skills"
+        hint: "skills"
+      projects:
+        title: "projects"
+        hint: "projects"
+      articles:
+        title: "articles"
+        hint: "articles"
+      rich:
+        title: "rich"
+        hint: "rich"
+      heading:
+        title: "heading"
+        hint: "heading"
+      text_before:
+        title: "text_before"
+        hint: "text_before"
+      dynamic:
+        title: "dynamic"
+        hint: "dynamic"
+      text_after:
+        title: "text_after"
+        hint: "text_after"
+      sections_repeater:
+        title: "sections_repeater"
+        hint: "sections_repeater"

@@ -1,4 +1,4 @@
-<nav class="flex flex-nowrap items-center justify-start w-full max-w-prose mx-[10%] xl:mx-[15%] px-3">
+<nav class="flex flex-nowrap items-center justify-start <%= center_div_classes %> px-3 mb-4">
   <% home_page = Spina::Page.find_by(name: "homepage") %>
   <%= link_to home_page.menu_title, home_page.materialized_path, class: "update-user-name", title: home_page.menu_title %>
   <%= render ('shared/icons/chevron-right') %>

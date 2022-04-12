@@ -14,11 +14,11 @@
   </head>
 
   <body class="text-gray-300 text-xl font-serif bg-neutral-800">
-    <div class="flex flex-col items-center lg:items-start relative pt-40">
+    <div class="flex flex-col relative pt-40">
       <%= render 'default/shared/navigation' %>
-      <%= render 'default/shared/sections/breadcrumbs' %>
-      <main class="w-full pt-6"><%= yield %></main>
-      <%= render 'default/shared/sections/footer' %>
+      <%= render 'default/shared/breadcrumbs' if current_page.name != "homepage" %>
+      <main class="w-full"><%= yield %></main>
+      <%= render 'default/shared/footer' %>
     </div>
 
     <%= yield(:game) %>

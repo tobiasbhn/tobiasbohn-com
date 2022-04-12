@@ -1,19 +1,19 @@
 <%= render 'default/shared/snake_background' do %>
 
-  <section class="w-full max-w-prose mx-[10%] xl:mx-[15%] px-3 tb-content mb-40 flex flex-col">
+  <section class="<%= center_div_classes %> px-3 tb-content mb-40 flex flex-col">
     <h1 class="order-3 !mb-1"><%= current_page.title %></h1>
-    <h2 class="order-4 !mb-10"><%= content :home_sub_heading %></h2>
+    <h2 class="order-4 !mb-10"><%= content :home_heading %></h2>
     <p class="order-5 mb-4">
       <%= I18n.t('home.alright') %>
       <span class="fill-name"></span>
-      &ndash;&nbsp;<%= content :home_introduction %>
+      &ndash;&nbsp;<%= content :home_text %>
     </p>
-    <%= content.image_tag :home_main_image, { loader: { page: nil } }, { class: "order-6" } %>
+    <%= content.image_tag :thumbnail, { loader: { page: nil } }, { class: "order-6 #{img_classes}" } %>
 
 
     <p class="order-1 mb-4 text-4xl sm:!text-6xl">
       <span class="whitespace-nowrap inline-block w-full overflow-hidden p-px" aria-hidden="true">
-        Hey <input type="text" id="snakeNameInput" title="<%= I18n.t('home.name_query') %>" placeholder="<%= I18n.t('home.name_query') %>">,
+        Hey <input type="text" id="snakeNameInput" class="h-[1em]" title="<%= I18n.t('home.name_query') %>" placeholder="<%= I18n.t('home.name_query') %>">,
       </span><br>
       <%= content :home_welcome %>
     </p>
@@ -32,14 +32,6 @@
     </p>
   </section>
 
-  <section class="w-full max-w-prose mx-[10%] xl:mx-[15%] px-3 tb-content mb-40">
-    <%= content.html :home_projects %>
-  </section>
-
-  <section class="w-full max-w-prose mx-[10%] xl:mx-[15%] px-3 tb-content">
-    <%= content.html :home_skills %>
-  </section>
-
-  <%= render 'default/shared/sections/skills_selector', skills_selector: current_page.content(:skills_selector) %>
+  <%= render 'default/shared/sections_repeater' %>
 
 <% end %>
