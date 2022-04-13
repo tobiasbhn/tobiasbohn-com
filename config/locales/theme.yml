@@ -36,25 +36,28 @@ de:
         title: "single_article_selector"
         hint: "single_article_selector"
       image:
-        title: "image"
+        title: "Bild"
         hint: "image"
       images:
-        title: "images"
+        title: "Bilder Collage"
+        hint: "images"
+      gallerie:
+        title: "Bilder Gallerie"
         hint: "images"
       tags:
-        title: "tags"
+        title: "Tags"
         hint: "tags"
       skills:
-        title: "skills"
+        title: "Fähigkeiten"
         hint: "skills"
       projects:
-        title: "projects"
+        title: "Projekte"
         hint: "projects"
       articles:
-        title: "articles"
+        title: "Artikel"
         hint: "articles"
       rich:
-        title: "rich"
+        title: "Rich Editor"
         hint: "rich"
       heading:
         title: "heading"

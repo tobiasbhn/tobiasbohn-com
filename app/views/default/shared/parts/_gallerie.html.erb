@@ -1,0 +1,18 @@
+<div class="max-w-prose lg:max-w-none mx-auto lg:mx-[10%] xl:mx-[15%] mb-40 px-0 md:px-3" data-controller="gallerie" data-gallerie-index-value="0" data-gallerie-id="<%= part.object_id %>">
+  <div class="w-full bg-neutral-700 bg-opacity-25 md:rounded mb-4 p-4">
+    <% classes = "rounded object-contain !mx-auto w-full md:!w-auto max-w-full h-full md:!h-auto max-h-[50vh]" %>
+    <% part.each_with_index do |image, index| %>
+      <div class="<%= 'hidden' if index > 0 %>" data-gallerie-target="image" data-id="<%= part.object_id %>" data-index="<%= index %>">
+        <%= zoomable_image_tag(current_page, image, classes) %>
+      </div>
+    <% end %>
+  </div>
+
+  <ul class="w-full list-none grid grid-cols-3 sm:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6 2xl:grid-cols-7 gap-4 px-3 md:px-0">
+    <% part.each_with_index do |image, index| %>
+      <li class="w-full h-[13vh]" role="button" data-id="<%= part.object_id %>" data-index="<%= index %>" data-action="click->gallerie#showImage">
+        <%= content.image_tag(image, { loader: { page: nil } }, { class: "w-full h-full object-cover rounded" }) %>
+      </li>
+    <% end %>
+  </ul>
+</div>

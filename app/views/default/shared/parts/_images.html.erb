@@ -2,7 +2,7 @@
   <ul class="w-full list-none columns-2 md:columns-3 xl:columns-4 gap-4">
     <% part.each do |image| %>
       <li class="w-full my-4 first:!mt-0">
-        <%= content.image_tag(image, { loader: { page: nil } }, { class: img_classes }) %>
+        <%= zoomable_image_tag(current_page, image, img_classes) %>
       </li>
     <% end %>
   </ul>

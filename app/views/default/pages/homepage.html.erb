@@ -8,7 +8,7 @@
       <span class="fill-name"></span>
       &ndash;&nbsp;<%= content :home_text %>
     </p>
-    <%= content.image_tag :thumbnail, { loader: { page: nil } }, { class: "order-6 #{img_classes}" } %>
+    <%= zoomable_image_tag(current_page, :thumbnail, "order-6 #{img_classes}") %>
 
 
     <p class="order-1 mb-4 text-4xl sm:!text-6xl">

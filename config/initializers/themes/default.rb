@@ -40,6 +40,7 @@ Spina::Theme.register do |theme|
     # Dynamic Contents
     { name: 'image', title: I18n.t('theme.parts.image.title'), part_type: "Spina::Parts::Image", hint: I18n.t('theme.parts.image.hint') },
     { name: 'images', title: I18n.t('theme.parts.images.title'), part_type: "Spina::Parts::ImageCollection", hint: I18n.t('theme.parts.images.hint') },
+    { name: 'gallerie', title: I18n.t('theme.parts.gallerie.title'), part_type: "Spina::Parts::ImageCollection", hint: I18n.t('theme.parts.gallerie.hint') },
     { name: 'tags', title: I18n.t('theme.parts.tags.title'), part_type: "Spina::Parts::Repeater", parts: %w(single_tag_selector), hint: I18n.t('theme.parts.tags.hint') },
     { name: 'skills', title: I18n.t('theme.parts.skills.title'), part_type: "Spina::Parts::Repeater", parts: %w(single_tag_selector), hint: I18n.t('theme.parts.skills.hint') },
     { name: 'projects', title: I18n.t('theme.parts.projects.title'), part_type: "Spina::Parts::Repeater", parts: %w(single_project_selector), hint: I18n.t('theme.parts.projects.hint') },
@@ -49,7 +50,7 @@ Spina::Theme.register do |theme|
     # Main Section
     { name: 'heading', title: I18n.t('theme.parts.heading.title'), part_type: "Spina::Parts::MultiLine", hint: I18n.t('theme.parts.heading.hint') },
     { name: 'text_before', title: I18n.t('theme.parts.text_before.title'), part_type: "Spina::Parts::MultiLine", hint: I18n.t('theme.parts.text_before.hint') },
-    { name: 'dynamic', title: I18n.t('theme.parts.dynamic.title'), part_type: "Spina::Parts::Dynamic", parts: %w(image images tags skills projects articles rich), hint: I18n.t('theme.parts.dynamic.hint') },
+    { name: 'dynamic', title: I18n.t('theme.parts.dynamic.title'), part_type: "Spina::Parts::Dynamic", parts: %w(image images gallerie tags skills projects articles rich), hint: I18n.t('theme.parts.dynamic.hint') },
     { name: 'text_after', title: I18n.t('theme.parts.text_after.title'), part_type: "Spina::Parts::MultiLine", hint: I18n.t('theme.parts.text_after.hint') },
 
     # Section Repeater
