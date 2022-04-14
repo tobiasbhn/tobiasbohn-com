@@ -1,0 +1,24 @@
+version: '3.4'
+services:
+  postgres:
+    environment: &dev_shared_postgres_config
+      POSTGRES_USER: rails
+      POSTGRES_PASSWORD: rails
+    volumes:
+      - postgres_dev_data:/var/lib/postgresql/data
+
+  web:
+    image: ${DOCKER_IMAGE_NAME}:dev
+    build:
+      target: development
+    environment: *dev_shared_postgres_config
+    volumes: &dev_web_volumes
+      - .:/application
+
+  delayed_job:
+    image: ${DOCKER_IMAGE_NAME}:dev
+    environment: *dev_shared_postgres_config
+    volumes: *dev_web_volumes
+
+volumes:
+  postgres_dev_data:

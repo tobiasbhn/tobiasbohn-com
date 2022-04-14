@@ -35,3 +35,8 @@
 /app/assets/config/*
 !/app/assets/config/.keep
 !/app/assets/config/manifest.js
+
+.env
+
+/db/backups/*
+!/db/backups/.keep

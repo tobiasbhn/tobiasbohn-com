@@ -1,0 +1,52 @@
+# .dockerignore file to INCLUDE files (not exclude), as described on:
+# https://youknowfordevs.com/2018/12/07/getting-control-of-your-dockerignore-files.html
+
+# Exclude everything:
+*
+
+# Now un-exclude needed files
+# Root Folders
+!app
+!bin
+!lib
+!entrypoints
+!vendor
+
+# Root Files
+!Gemfile*
+!Rakefile
+!config.ru
+!default_db_backup.psql
+
+# Config Folder
+!config/environments
+!config/initializers
+!config/locales
+!config/webpack
+!config/application.rb
+!config/boot.rb
+!config/cable.yml
+!config/credentials.yml.enc
+!config/database.yml
+!config/environment.rb
+!config/importmap.rb
+!config/puma.rb
+!config/routes.rb
+!config/storage.yml
+!config/tailwind.config.js
+
+# DB Folder
+!db/migrate
+!db/schema.rb
+!db/seeds.rb
+
+# Public Folder
+!public/404.html
+!public/422.html
+!public/500.html
+!public/*.png
+!public/*.txt
+!public/*.svg
+!public/favicon.ico
+!public/browserconfig.xml
+!public/site.webmanifest

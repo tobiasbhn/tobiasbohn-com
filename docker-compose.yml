@@ -1,0 +1,24 @@
+version: '3.4'
+services:
+  postgres:
+    image: postgres:11.4
+    restart: always
+
+  web:
+    image: ${DOCKER_IMAGE_NAME}
+    build:
+      context: .
+      args:
+        RAILS_MASTER_KEY: ${RAILS_MASTER_KEY}
+    ports:
+      - "${RAILS_PORT}:${RAILS_PORT}"
+    depends_on:
+      - postgres
+
+  delayed_job:
+    image: ${DOCKER_IMAGE_NAME}
+    command: /usr/bin/job-entrypoint.sh
+    entrypoint: ''
+    depends_on:
+      - postgres
+      - web

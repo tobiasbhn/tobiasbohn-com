@@ -1,0 +1,33 @@
+version: '3.4'
+services:
+  postgres:
+    environment: &prod_shared_postgres_config
+      POSTGRES_USER: ${POSTGRES_USER}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
+    volumes:
+      - postgres_prod_data:/var/lib/postgresql/data
+
+  web:
+    image: ${DOCKER_IMAGE_NAME}:prod
+    build:
+      target: production
+    restart: always
+    environment:
+      <<: *prod_shared_postgres_config
+      <<: &prod_shared_web_config
+        RAILS_MASTER_KEY: ${RAILS_MASTER_KEY}
+    volumes: &prod_shared_storage_volume
+      - web_prod_storage:/application/storage
+      - .:/application/db/backups
+
+  delayed_job:
+    image: ${DOCKER_IMAGE_NAME}:prod
+    restart: always
+    environment:
+      <<: *prod_shared_web_config
+      <<: *prod_shared_postgres_config
+    volumes: *prod_shared_storage_volume
+
+volumes:
+  postgres_prod_data:
+  web_prod_storage:
