@@ -1,7 +1,7 @@
 module ApplicationHelper
 
   def center_div_classes
-    "w-full max-w-prose mx-auto lg:mx-[10%] xl:mx-[15%]"
+    "w-full max-w-prose mx-auto lg:mx-[10vw] xl:mx-[15vw]"
   end
 
   def img_classes
